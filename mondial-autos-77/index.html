@@ -131,16 +131,76 @@
   .story blockquote em { font-style: normal; color: var(--orange); }
   .story small { display: block; margin-top: 14px; color: var(--grey); font-size: 15px; }
 
-  /* Services */
-  .svc-s { background: #0f0f11; border-top: 1px solid var(--line-d); }
-  .svc { margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .card { background: linear-gradient(180deg, var(--black-2), #111113); border: 1px solid var(--line-d); border-radius: 24px; padding: 30px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; transition: border-color .3s ease; cursor: default; position: relative; overflow: hidden; }
-  .card::after { content: ""; position: absolute; right: -60px; top: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(rgba(255,90,26,.22), transparent 70%); opacity: 0; transition: opacity .4s ease; }
-  .card:hover { border-color: rgba(255,90,26,.7); }
-  .card:hover::after { opacity: 1; }
-  .card svg { width: 30px; height: 30px; stroke: var(--orange); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; padding: 13px; box-sizing: content-box; border-radius: 16px; background: rgba(255,90,26,.1); }
-  .card h3 { font-size: clamp(24px, 2.6vw, 34px); margin-top: 26px; text-transform: uppercase; }
-  .card p { margin-top: 10px; color: #b6b6bc; }
+  /* L'atelier : voiture de face interactive */
+  .svc-s { background: #0f0f11; border-top: 1px solid var(--line-d); overflow: hidden; }
+  .shop { margin-top: 48px; display: grid; grid-template-columns: 1.35fr .9fr; gap: 28px; align-items: center; }
+  .stage { position: relative; aspect-ratio: 3 / 2; border-radius: 28px; overflow: hidden; border: 1px solid var(--line-d);
+    background: radial-gradient(ellipse 40% 30% at 50% 28%, rgba(255,90,26,.28), transparent 70%), linear-gradient(#0c0c0e 0 28%, #121215 28%); }
+  .stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #car { transform-box: view-box; transform-origin: 300px 372px; transform: translateY(-262px) scale(.12); opacity: 0; }
+  .stage.go #car { animation: arrive 2.6s cubic-bezier(.25,.7,.25,1) forwards; }
+  @keyframes arrive { 0% { transform: translateY(-262px) scale(.12); opacity: 0; } 8% { opacity: 1; } 88% { transform: translateY(13px) scale(.875); } 100% { transform: translateY(10px) scale(.86); opacity: 1; } }
+  .stage.go #body { animation: bob .18s ease-in-out 14 alternate; }
+  @keyframes bob { to { transform: translateY(1.6px); } }
+  .glow { opacity: .25; transition: opacity .3s ease; }
+  .stage.lit .glow { opacity: 1; }
+  .stage.flash .glow { animation: flash .9s ease 2; }
+  @keyframes flash { 0%,100% { opacity: .3; } 30% { opacity: 1; } 55% { opacity: .2; } }
+  .pool { opacity: 0; transition: opacity .8s ease; }
+  .stage.lit .pool { opacity: .5; }
+  .hs { position: absolute; transform: translate(-50%, -50%) scale(0); z-index: 3; display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: none; cursor: pointer; color: var(--white); font: 700 13px/1 "DM Sans", sans-serif; transition: transform .45s cubic-bezier(.3,1.6,.5,1); }
+  .stage.ready .hs { transform: translate(-50%, -50%) scale(1); }
+  .stage.ready .hs:nth-of-type(2) { transition-delay: .08s; } .stage.ready .hs:nth-of-type(3) { transition-delay: .16s; } .stage.ready .hs:nth-of-type(4) { transition-delay: .24s; } .stage.ready .hs:nth-of-type(5) { transition-delay: .32s; }
+  .hs i { position: relative; width: 22px; height: 22px; border-radius: 50%; background: var(--orange); border: 4px solid #0b0b0c; box-shadow: 0 0 0 2px var(--orange); flex: none; }
+  .hs i::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 2px solid var(--orange); animation: ping 1.8s ease-out infinite; }
+  @keyframes ping { from { transform: scale(.5); opacity: 1; } to { transform: scale(1.5); opacity: 0; } }
+  .hs span { background: rgba(11,11,12,.85); border: 1px solid var(--line-d); padding: 7px 10px; border-radius: 99px; white-space: nowrap; }
+  .hs.left { flex-direction: row-reverse; }
+  .hs[aria-pressed="true"] i { background: var(--white); box-shadow: 0 0 0 2px var(--white); }
+  .hs[aria-pressed="true"] i::after { border-color: var(--white); }
+  .hs[aria-pressed="true"] span { background: var(--orange); color: var(--black); border-color: var(--orange); }
+  .tip { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font-size: 13px; color: var(--grey); white-space: nowrap; z-index: 2; opacity: 0; transition: opacity .5s ease 1s; }
+  .stage.ready .tip { opacity: 1; }
+
+  .zoom { background: linear-gradient(180deg, var(--black-2), #111113); border: 1px solid var(--line-d); border-radius: 28px; padding: 28px; }
+  .lens { width: 220px; height: 220px; margin: 0 auto 6px; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #1d1d21, #0b0b0c 72%); border: 1px solid var(--line-d); box-shadow: 0 0 0 10px rgba(255,90,26,.07), 0 30px 60px -30px rgba(255,90,26,.6); overflow: hidden; }
+  .lens svg { width: 100%; height: 100%; display: block; }
+  .ill { display: none; }
+  .ill.on { display: inline; }
+  .zoom .tag { display: inline-block; margin-top: 18px; font: 700 12px/1 "DM Sans", sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--orange); }
+  .zoom h3 { font-size: clamp(28px, 3vw, 40px); text-transform: uppercase; margin-top: 8px; }
+  .zoom p { color: #b6b6bc; margin-top: 10px; }
+  .zoom ul { list-style: none; padding: 0; margin: 16px 0 22px; display: grid; gap: 8px; }
+  .zoom li { display: flex; gap: 10px; align-items: baseline; color: #e2e2e6; }
+  .zoom li::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--orange); transform: rotate(45deg) translateY(-1px); flex: none; }
+  .zoom .btn { width: 100%; }
+  .zoom-in { animation: zin .45s cubic-bezier(.2,.8,.2,1); }
+  @keyframes zin { from { opacity: 0; transform: translateY(10px); } }
+
+  /* animations des loupes */
+  .spin { transform-box: view-box; transform-origin: 120px 120px; animation: brake 3.2s cubic-bezier(.15,.55,.3,1) infinite; }
+  @keyframes brake { 0% { transform: rotate(0); } 70%,100% { transform: rotate(1260deg); } }
+  .hot { opacity: 0; animation: heat 3.2s ease infinite; }
+  @keyframes heat { 0%,35% { opacity: 0; } 65% { opacity: .85; } 100% { opacity: 0; } }
+  .clamp { transform-box: view-box; transform-origin: 120px 120px; animation: clamp 3.2s ease infinite; }
+  @keyframes clamp { 0%,30% { transform: scale(1); } 40%,72% { transform: scale(.965); } 85%,100% { transform: scale(1); } }
+  .tyre-old { transform-box: view-box; transform-origin: 120px 120px; animation: tOut 4s ease-in-out infinite; }
+  .tyre-new { transform-box: view-box; transform-origin: 120px 120px; animation: tIn 4s ease-in-out infinite; }
+  @keyframes tOut { 0%,30% { transform: none; opacity: 1; } 50% { transform: translateX(-250px) rotate(-300deg); opacity: 1; } 51%,100% { transform: translateX(-250px); opacity: 0; } }
+  @keyframes tIn { 0%,45% { transform: translateX(250px) rotate(300deg); opacity: 0; } 46% { opacity: 1; } 68%,100% { transform: none; opacity: 1; } }
+  .pist { transform-box: view-box; animation: pist .5s ease-in-out infinite alternate; }
+  .pist.b { animation-delay: -.25s; }
+  @keyframes pist { to { transform: translateY(26px); } }
+  .spark { animation: spark .5s steps(1) infinite; }
+  .spark.b { animation-delay: -.25s; }
+  @keyframes spark { 0% { opacity: 1; } 30% { opacity: 0; } }
+  .beam { transform-box: view-box; transform-origin: 70px 120px; animation: beam 2.6s ease infinite; }
+  @keyframes beam { 0%,15% { opacity: .05; } 22% { opacity: 1; } 28% { opacity: .3; } 34%,100% { opacity: 1; } }
+  .blink { animation: blinkV 3s steps(1) infinite; }
+  @keyframes blinkV { 0%,12%,24%,36%,48% { opacity: 1; } 6%,18%,30%,42% { opacity: .15; } 60%,100% { opacity: 0; } }
+  .okv { opacity: 0; animation: okv 3s ease infinite; }
+  @keyframes okv { 0%,58% { opacity: 0; transform: scale(.6); } 66%,100% { opacity: 1; transform: none; } }
+  .okv { transform-box: view-box; transform-origin: 120px 120px; }
 
   /* Gros appel */
   .callband { padding: 110px 0; text-align: center; overflow: hidden; border-top: 1px solid var(--line-d);
@@ -186,7 +246,13 @@
     .wd.is-today::before { position: static; transform: none; margin-left: 6px; order: 2; }
     .wd.is-today .n { margin-top: 0; }
     .wd .h { order: 3; }
-    .steps, .svc, .end { grid-template-columns: 1fr; }
+    .steps, .shop, .end { grid-template-columns: 1fr; }
+    .stage { border-radius: 20px; }
+    .hs { gap: 5px; }
+    .hs span { font-size: 11px; padding: 5px 7px; }
+    .hs i { width: 15px; height: 15px; border-width: 3px; }
+    .hs i::after { inset: -6px; }
+    .zoom { padding: 22px; }
     .step { min-height: 0; }
     .story { grid-template-columns: 1fr; gap: 24px; }
     section, .week-s { padding: 84px 0; }
@@ -216,7 +282,7 @@
     <nav aria-label="Menu">
       <a href="#semaine">Horaires</a>
       <a href="#panne">En panne ?</a>
-      <a href="#services">Services</a>
+      <a href="#atelier">L'atelier</a>
       <a href="#contact">Contact</a>
     </nav>
     <a href="tel:+33753314384" class="btn btn-o">07 53 31 43 84</a>
@@ -303,17 +369,162 @@
     </div>
   </section>
 
-  <!-- ============ SERVICES ============ -->
-  <section id="services" class="svc-s" aria-labelledby="t-svc">
+  <!-- ============ L'ATELIER : VOITURE DE FACE ============ -->
+  <section id="atelier" class="svc-s" aria-labelledby="t-svc">
     <div class="wrap">
       <p class="kick">L'atelier</p>
-      <h2 class="h2" id="t-svc">Toutes marques.<br>Tout ce qui roule.</h2>
-      <p class="intro">Citadine, familiale ou SUV haut de gamme, on s'en occupe.</p>
-      <div class="svc">
-        <article class="card reveal"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5M11 8v3l2 2"/></svg><div><h3>Diagnostic</h3><p>Voyant allumé, bruit, perte de puissance : on cherche la vraie cause avant de changer quoi que ce soit.</p></div></article>
-        <article class="card reveal"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg><div><h3>Réparation</h3><p>Moteur, refroidissement, freins, embrayage et réparations du quotidien.</p></div></article>
-        <article class="card reveal"><svg viewBox="0 0 24 24"><path d="M12 3s5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 5-9 5-9z"/><path d="M10 14a2 2 0 0 0 2 2"/></svg><div><h3>Entretien</h3><p>Vidange, filtres, révision et contrôle avant un long trajet.</p></div></article>
-        <article class="card reveal"><svg viewBox="0 0 24 24"><path d="M2 16V9h11v7M13 11h5l3 3v2h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><div><h3>Remorquage</h3><p>En panne sur la route ? On organise la dépanneuse jusqu'à l'atelier.</p></div></article>
+      <h2 class="h2" id="t-svc">Touchez<br>la panne.</h2>
+      <p class="intro">Toutes marques, de la citadine au SUV. Cliquez sur la partie de la voiture qui vous inquiète.</p>
+
+      <div class="shop">
+        <div class="stage" id="stage">
+          <svg viewBox="0 0 600 400" aria-hidden="true">
+            <defs>
+              <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3140"/><stop offset="1" stop-color="#101217"/></linearGradient>
+              <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a30"/><stop offset="1" stop-color="#17171a"/></linearGradient>
+              <radialGradient id="hl"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffe9d6" stop-opacity=".8"/><stop offset="1" stop-color="#ff7a3d" stop-opacity="0"/></radialGradient>
+              <radialGradient id="poolG"><stop offset="0" stop-color="#fff2e6" stop-opacity=".55"/><stop offset="1" stop-color="#fff2e6" stop-opacity="0"/></radialGradient>
+            </defs>
+            <!-- horizon : silhouette de ville -->
+            <g fill="#17171b">
+              <rect x="40" y="88" width="34" height="24"/><rect x="78" y="74" width="22" height="38"/><rect x="104" y="92" width="40" height="20"/><rect x="150" y="80" width="18" height="32"/>
+              <rect x="420" y="84" width="26" height="28"/><rect x="450" y="70" width="20" height="42"/><rect x="474" y="90" width="44" height="22"/><rect x="524" y="80" width="24" height="32"/>
+            </g>
+            <!-- route en perspective -->
+            <polygon points="284,112 316,112 760,400 -160,400" fill="#151518"/>
+            <path d="M287 112 L-90 400 M313 112 L690 400" stroke="#3a3a40" stroke-width="3"/>
+            <g id="dashes" fill="#ff5a1a" opacity=".9"></g>
+            <ellipse class="pool" cx="300" cy="392" rx="240" ry="26" fill="url(#poolG)"/>
+
+            <g id="car">
+              <ellipse cx="300" cy="374" rx="262" ry="16" fill="#000" opacity=".7"/>
+              <g id="body">
+                <!-- pneus -->
+                <rect x="78" y="292" width="80" height="84" rx="16" fill="#09090a"/>
+                <rect x="442" y="292" width="80" height="84" rx="16" fill="#09090a"/>
+                <g stroke="#1f1f23" stroke-width="3"><path d="M84 312h68M84 330h68M84 348h68M448 312h68M448 330h68M448 348h68"/></g>
+                <!-- rétroviseurs -->
+                <path d="M156 178 L116 170 Q102 172 104 190 L152 196 Z" fill="#202025" stroke="#33333a" stroke-width="2"/>
+                <path d="M444 178 L484 170 Q498 172 496 190 L448 196 Z" fill="#202025" stroke="#33333a" stroke-width="2"/>
+                <!-- pare-brise et toit -->
+                <path d="M164 172 L204 94 Q300 82 396 94 L436 172 Z" fill="#232328"/>
+                <path d="M176 168 L212 102 Q300 92 388 102 L424 168 Z" fill="url(#glass)"/>
+                <path d="M214 108 L196 150" stroke="#ffffff" stroke-opacity=".08" stroke-width="10" stroke-linecap="round"/>
+                <rect x="268" y="150" width="64" height="10" rx="5" fill="#0b0b0d"/>
+                <circle id="dashLed" cx="300" cy="155" r="3" fill="#ff5a1a"/>
+                <!-- capot -->
+                <path d="M150 170 L450 170 L506 232 L94 232 Z" fill="url(#paint)" stroke="#34343b" stroke-width="2"/>
+                <path d="M248 176 L232 228 M352 176 L368 228" stroke="#3a3a42" stroke-width="2"/>
+                <!-- bouclier -->
+                <path d="M58 300 Q56 252 92 230 L508 230 Q544 252 542 300 L542 334 Q542 354 520 354 L80 354 Q58 354 58 334 Z" fill="url(#paint)" stroke="#34343b" stroke-width="2"/>
+                <path d="M70 298 H530" stroke="#ff5a1a" stroke-width="3" opacity=".9"/>
+                <!-- phares -->
+                <path d="M76 246 L196 254 L186 282 L94 278 Q76 270 76 246 Z" fill="#d9d9de"/>
+                <path d="M524 246 L404 254 L414 282 L506 278 Q524 270 524 246 Z" fill="#d9d9de"/>
+                <path d="M84 252 L190 259" stroke="#ff7a3d" stroke-width="4" stroke-linecap="round"/>
+                <path d="M516 252 L410 259" stroke="#ff7a3d" stroke-width="4" stroke-linecap="round"/>
+                <ellipse class="glow" cx="138" cy="266" rx="92" ry="44" fill="url(#hl)"/>
+                <ellipse class="glow" cx="462" cy="266" rx="92" ry="44" fill="url(#hl)"/>
+                <!-- calandre -->
+                <rect x="214" y="250" width="172" height="44" rx="14" fill="#0d0d0f" stroke="#2e2e34" stroke-width="2"/>
+                <g stroke="#26262b" stroke-width="3"><path d="M226 262h148M226 272h148M226 282h148"/></g>
+                <circle cx="300" cy="272" r="17" fill="#ff5a1a"/>
+                <text x="300" y="278" text-anchor="middle" font-family="Unbounded, Arial Black, sans-serif" font-size="14" font-weight="900" fill="#0b0b0c">77</text>
+                <!-- bas de caisse, antibrouillards, plaque -->
+                <rect x="140" y="312" width="320" height="30" rx="12" fill="#0d0d0f"/>
+                <circle cx="114" cy="324" r="9" fill="#2a2a30" stroke="#3a3a40" stroke-width="2"/>
+                <circle cx="486" cy="324" r="9" fill="#2a2a30" stroke="#3a3a40" stroke-width="2"/>
+                <rect x="240" y="314" width="120" height="26" rx="4" fill="#f4f4f2"/>
+                <rect x="240" y="314" width="14" height="26" rx="3" fill="#1f4bb8"/>
+                <text x="306" y="333" text-anchor="middle" font-family="DM Sans, Arial" font-size="15" font-weight="700" fill="#111" letter-spacing="1">MA-77-CH</text>
+              </g>
+            </g>
+          </svg>
+
+          <button class="hs" type="button" data-p="voyant" style="left:50%;top:45.6%" aria-pressed="false"><i></i><span>Voyant</span></button>
+          <button class="hs" type="button" data-p="moteur" style="left:50%;top:58.5%" aria-pressed="false"><i></i><span>Moteur</span></button>
+          <button class="hs left" type="button" data-p="phares" style="left:26.8%;top:72.7%" aria-pressed="false"><i></i><span>Phares</span></button>
+          <button class="hs left" type="button" data-p="freins" style="left:23.9%;top:87.7%" aria-pressed="false"><i></i><span>Freins</span></button>
+          <button class="hs" type="button" data-p="pneus" style="left:76.1%;top:87.7%" aria-pressed="false"><i></i><span>Pneus</span></button>
+          <p class="tip">Cliquez sur un point orange</p>
+        </div>
+
+        <div class="zoom" id="zoom" aria-live="polite">
+          <div class="lens">
+            <svg viewBox="0 0 240 240" aria-hidden="true">
+              <!-- FREINS : disque qui tourne, l'étrier serre, le disque chauffe -->
+              <g class="ill" data-ill="freins">
+                <circle cx="120" cy="120" r="112" fill="#09090a"/>
+                <circle cx="120" cy="120" r="112" fill="none" stroke="#1d1d21" stroke-width="10" stroke-dasharray="6 8"/>
+                <g class="spin">
+                  <circle cx="120" cy="120" r="84" fill="#202024"/>
+                  <circle cx="120" cy="120" r="70" fill="#7a7a82"/>
+                  <circle cx="120" cy="120" r="70" fill="none" stroke="#5c5c63" stroke-width="2" stroke-dasharray="2 5"/>
+                  <g fill="#3a3a40"><circle cx="120" cy="66" r="4"/><circle cx="174" cy="120" r="4"/><circle cx="120" cy="174" r="4"/><circle cx="66" cy="120" r="4"/><circle cx="158" cy="82" r="4"/><circle cx="158" cy="158" r="4"/><circle cx="82" cy="158" r="4"/><circle cx="82" cy="82" r="4"/></g>
+                  <circle class="hot" cx="120" cy="120" r="70" fill="#ff5a1a"/>
+                  <g fill="none" stroke="#2c2c31" stroke-width="12" stroke-linecap="round"><path d="M120 92 V40M147 128 L196 144M137 151 L166 192M103 151 L74 192M93 128 L44 144"/></g>
+                  <circle cx="120" cy="120" r="30" fill="#1a1a1d"/>
+                  <g fill="#9a9aa0"><circle cx="120" cy="106" r="4"/><circle cx="133" cy="116" r="4"/><circle cx="128" cy="131" r="4"/><circle cx="112" cy="131" r="4"/><circle cx="107" cy="116" r="4"/></g>
+                </g>
+                <g class="clamp">
+                  <path d="M150 44 A 82 82 0 0 1 198 98 L176 106 A 58 58 0 0 0 142 66 Z" fill="#ff5a1a" stroke="#0b0b0c" stroke-width="3"/>
+                  <text x="172" y="84" text-anchor="middle" font-family="Unbounded, Arial Black" font-size="11" font-weight="900" fill="#0b0b0c" transform="rotate(42 172 84)">77</text>
+                </g>
+              </g>
+              <!-- PNEUS : le pneu usé sort, le neuf arrive -->
+              <g class="ill" data-ill="pneus">
+                <g class="tyre-old">
+                  <circle cx="120" cy="120" r="98" fill="#2a2a2e"/>
+                  <circle cx="120" cy="120" r="98" fill="none" stroke="#3a3a3f" stroke-width="6" stroke-dasharray="3 18"/>
+                  <path d="M60 70 l10 6 M168 160 l8 10 M80 170 l-6 8" stroke="#141416" stroke-width="3"/>
+                  <circle cx="120" cy="120" r="56" fill="#3a3a40"/>
+                  <g stroke="#2a2a2e" stroke-width="10"><path d="M120 70v100M70 120h100"/></g>
+                  <circle cx="120" cy="120" r="16" fill="#555"/>
+                  <text x="120" y="222" text-anchor="middle" font-family="DM Sans" font-size="13" font-weight="700" fill="#9a9aa0">usé</text>
+                </g>
+                <g class="tyre-new">
+                  <circle cx="120" cy="120" r="98" fill="#0b0b0c"/>
+                  <circle cx="120" cy="120" r="92" fill="none" stroke="#1e1e22" stroke-width="12" stroke-dasharray="10 6"/>
+                  <circle cx="120" cy="120" r="60" fill="#c9c9cf"/>
+                  <g stroke="#0b0b0c" stroke-width="8" stroke-linecap="round"><path d="M120 66v28M171 103l-26 9M152 164l-16-23M88 164l16-23M69 103l26 9"/></g>
+                  <circle cx="120" cy="120" r="22" fill="#ff5a1a"/>
+                  <circle cx="120" cy="120" r="6" fill="#0b0b0c"/>
+                </g>
+              </g>
+              <!-- MOTEUR : pistons et étincelles -->
+              <g class="ill" data-ill="moteur">
+                <rect x="40" y="62" width="160" height="128" rx="14" fill="#202024" stroke="#34343b" stroke-width="2"/>
+                <g fill="#0d0d0f"><rect x="54" y="74" width="28" height="96" rx="6"/><rect x="88" y="74" width="28" height="96" rx="6"/><rect x="124" y="74" width="28" height="96" rx="6"/><rect x="158" y="74" width="28" height="96" rx="6"/></g>
+                <g fill="#9a9aa0"><rect class="pist" x="57" y="104" width="22" height="30" rx="4"/><rect class="pist b" x="91" y="104" width="22" height="30" rx="4"/><rect class="pist b" x="127" y="104" width="22" height="30" rx="4"/><rect class="pist" x="161" y="104" width="22" height="30" rx="4"/></g>
+                <g fill="#ff5a1a"><circle class="spark" cx="68" cy="84" r="6"/><circle class="spark b" cx="102" cy="84" r="6"/><circle class="spark b" cx="138" cy="84" r="6"/><circle class="spark" cx="172" cy="84" r="6"/></g>
+                <rect x="30" y="190" width="180" height="10" rx="5" fill="#ff5a1a"/>
+              </g>
+              <!-- PHARES : l'optique s'allume -->
+              <g class="ill" data-ill="phares">
+                <linearGradient id="beamG"><stop offset="0" stop-color="#fff4ea" stop-opacity=".95"/><stop offset="1" stop-color="#ff7a3d" stop-opacity="0"/></linearGradient><polygon class="beam" points="92,96 240,40 240,200 92,144" fill="url(#beamG)"/>
+                <path d="M20 86 L110 92 L104 152 L32 150 Q14 140 20 86 Z" fill="#d9d9de" stroke="#34343b" stroke-width="3"/>
+                <circle cx="62" cy="120" r="20" fill="#fff"/>
+                <path d="M28 98 L104 102" stroke="#ff7a3d" stroke-width="6" stroke-linecap="round"/>
+              </g>
+              <!-- VOYANT : le voyant clignote puis passe au vert -->
+              <g class="ill" data-ill="voyant">
+                <circle cx="120" cy="120" r="88" fill="#0d0d0f" stroke="#26262b" stroke-width="8"/>
+                <g class="blink" fill="none" stroke="#ff5a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+                  <path d="M72 104 h14 v-12 h40 l10 12 h18 v-8 h12 v48 h-12 v-8 h-12 l-12 16 h-44 l-14 -14 h-10 z"/>
+                  <path d="M96 92 v-10 h22"/>
+                </g>
+                <g class="okv"><circle cx="120" cy="120" r="44" fill="#1fbf6a"/><path d="M100 120 l14 14 l28 -30" fill="none" stroke="#0b0b0c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></g>
+              </g>
+            </svg>
+          </div>
+          <div id="zoom-txt">
+            <span class="tag" id="z-tag">Sécurité</span>
+            <h3 id="z-t">Freins</h3>
+            <p id="z-p"></p>
+            <ul id="z-l"></ul>
+            <a href="#contact" class="btn btn-o" id="z-btn">Être rappelé pour ça</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -436,6 +647,62 @@ document.getElementById('form').addEventListener('submit', function (e) {
   e.preventDefault();
   this.querySelector('.note-form').textContent = 'Maquette : sur le vrai site, la demande arrivera directement au garage par SMS ou par e-mail.';
 });
+
+// ---------- L'atelier : la voiture arrive, puis on clique sur la panne ----------
+(function () {
+  var stage = document.getElementById('stage'), dashes = document.getElementById('dashes');
+  var info = {
+    freins: { tag: 'Sécurité', t: 'Freins', p: 'Ça grince, ça vibre ou la pédale s\'enfonce ? Ne roulez pas avec, on regarde tout de suite.', l: ['Plaquettes et disques', 'Étriers de frein', 'Liquide de frein'], seg: 0 },
+    pneus: { tag: 'Entretien', t: 'Pneus', p: 'Usés, crevés ou à changer avant l\'hiver : on démonte, on monte et on équilibre.', l: ['Montage et équilibrage', 'Réparation de crevaison', 'Parallélisme'], seg: 2 },
+    moteur: { tag: 'Réparation', t: 'Moteur', p: 'Perte de puissance, fumée, bruit au démarrage : on cherche la vraie cause avant de changer quoi que ce soit.', l: ['Diagnostic complet', 'Courroie de distribution', 'Embrayage et refroidissement'], seg: 0 },
+    phares: { tag: 'Électricité', t: 'Phares', p: 'Une ampoule grillée, c\'est une amende assurée et un contrôle technique raté.', l: ['Ampoules et LED', 'Optiques ternies', 'Réglage de la hauteur'], seg: 2 },
+    voyant: { tag: 'Diagnostic', t: 'Voyant allumé', p: 'Un voyant orange sur le tableau de bord ? On branche la valise et on vous explique ce qu\'il veut dire.', l: ['Lecture des codes défaut', 'Explication claire', 'Prix annoncé avant la réparation'], seg: 1 }
+  };
+  var cur = 'freins';
+  function show(k, anim) {
+    cur = k; var d = info[k];
+    document.getElementById('z-tag').textContent = d.tag;
+    document.getElementById('z-t').textContent = d.t;
+    document.getElementById('z-p').textContent = d.p;
+    document.getElementById('z-l').innerHTML = d.l.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+    document.querySelectorAll('.ill').forEach(function (g) { g.classList.toggle('on', g.getAttribute('data-ill') === k); });
+    document.querySelectorAll('.hs').forEach(function (h) { h.setAttribute('aria-pressed', String(h.getAttribute('data-p') === k)); });
+    if (anim) { var z = document.getElementById('zoom-txt'); z.classList.remove('zoom-in'); void z.offsetWidth; z.classList.add('zoom-in'); }
+  }
+  document.querySelectorAll('.hs').forEach(function (h) { h.addEventListener('click', function () { show(h.getAttribute('data-p'), true); }); });
+  document.getElementById('z-btn').addEventListener('click', function () {
+    var b = document.querySelectorAll('.seg button')[info[cur].seg]; if (b) b.click();
+    var v = document.querySelector('input[name="voiture"]'); v.placeholder = 'Ex. : Peugeot 308, souci de ' + info[cur].t.toLowerCase();
+  });
+  show('freins', false);
+
+  // marquages de la route en perspective
+  var N = 7, off = 0, speed = 0.018, polys = [];
+  for (var i = 0; i < N; i++) { var p = document.createElementNS('http://www.w3.org/2000/svg', 'polygon'); dashes.appendChild(p); polys.push(p); }
+  function y(t) { return 112 + 288 * t * t; }
+  function w(t) { return 1 + 9 * t * t; }
+  function draw() {
+    for (var i = 0; i < N; i++) {
+      var a = ((i / N) + off) % 1, b = Math.min(a + 0.07, 1);
+      polys[i].setAttribute('points', (300 - w(a)) + ',' + y(a) + ' ' + (300 + w(a)) + ',' + y(a) + ' ' + (300 + w(b)) + ',' + y(b) + ' ' + (300 - w(b)) + ',' + y(b));
+    }
+  }
+  draw();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run() {
+    if (reduce) { stage.classList.add('go', 'lit', 'ready'); return; }
+    stage.classList.add('go', 'lit');
+    var t0 = performance.now();
+    (function loop(now) {
+      var k = Math.min((now - t0) / 2600, 1);
+      off = (off + speed * (1 - k) * (1 - k)) % 1; draw();
+      if (k < 1) requestAnimationFrame(loop);
+      else { stage.classList.add('flash'); setTimeout(function () { stage.classList.add('ready'); }, 700); }
+    })(t0);
+  }
+  var o = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { run(); o.disconnect(); } }, { threshold: .35 });
+  o.observe(stage);
+})();
 
 // ---------- Apparitions au défilement ----------
 var io = new IntersectionObserver(function (es) {
