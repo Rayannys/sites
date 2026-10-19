@@ -98,21 +98,21 @@
   .intro { margin-top: 18px; max-width: 56ch; font-size: 19px; color: #c6c6cc; }
 
   /* La semaine */
-  .week-s { background: var(--off); color: var(--black); padding: 110px 0 96px; }
-  .week-s .intro { color: #55555b; }
-  .week { margin-top: 52px; display: grid; grid-template-columns: repeat(7, 1fr); border: 2px solid var(--black); border-radius: 22px; overflow: hidden; }
-  .wd { padding: 24px 16px 22px; border-right: 2px solid var(--black); display: flex; flex-direction: column; gap: 40px; min-height: 240px; position: relative; transition: background-color .3s ease; }
-  .wd:last-child { border-right: 0; }
-  .wd .n { font: 900 15px/1 "Unbounded", sans-serif; text-transform: uppercase; }
+  .week-s { background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,90,26,.10), transparent 70%), #0f0f11; padding: 110px 0 96px; border-top: 1px solid var(--line-d); }
+  .week { margin-top: 52px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .wd { padding: 22px 16px 20px; background: var(--black-2); border: 1px solid var(--line-d); border-radius: 18px; display: flex; flex-direction: column; gap: 40px; min-height: 220px; position: relative; transition: border-color .3s ease; }
+  .wd .n { font: 700 14px/1 "Unbounded", sans-serif; text-transform: uppercase; color: #cfcfd4; letter-spacing: .02em; }
   .wd.is-today .n { margin-top: 30px; }
-  .wd .h { margin-top: auto; font: 700 26px/1 "Unbounded", sans-serif; }
-  .wd .h small { display: block; font: 500 14px/1.4 "DM Sans", sans-serif; color: #66666c; margin-top: 6px; }
-  .wd.sun { background: var(--orange); }
-  .wd.sun .h small { color: var(--black); }
-  .wd.off { background: repeating-linear-gradient(-45deg, #e6e6e3 0 12px, var(--off) 12px 24px); color: #8b8b90; }
-  .wd.is-today { background: var(--black); color: var(--white); }
-  .wd.is-today .h small { color: #b0b0b6; }
-  .wd.is-today::before { content: "Aujourd'hui"; position: absolute; top: 12px; right: 10px; background: var(--orange); color: var(--black); font: 700 12px/1 "DM Sans", sans-serif; padding: 6px 10px; border-radius: 99px; }
+  .wd .h { margin-top: auto; font: 700 24px/1 "Unbounded", sans-serif; }
+  .wd .h small { display: block; font: 500 14px/1.4 "DM Sans", sans-serif; color: var(--grey); margin-top: 6px; }
+  .wd.sun { background: linear-gradient(160deg, var(--orange-2), var(--orange)); border-color: var(--orange); color: var(--black); box-shadow: 0 20px 50px -20px rgba(255,90,26,.7); }
+  .wd.sun .n { color: var(--black); }
+  .wd.sun .h small { color: #3a1606; }
+  .wd.off { background: repeating-linear-gradient(-45deg, rgba(255,255,255,.035) 0 10px, transparent 10px 20px); color: #6c6c72; }
+  .wd.off .n { color: #6c6c72; }
+  .wd.is-today { border-color: var(--orange); box-shadow: inset 0 0 0 1px var(--orange); }
+  .wd.is-today::before { content: "Aujourd'hui"; position: absolute; top: 12px; left: 14px; background: var(--orange); color: var(--black); font: 700 12px/1 "DM Sans", sans-serif; padding: 6px 10px; border-radius: 99px; }
+  .wd.sun.is-today::before { background: var(--black); color: var(--orange); }
 
   /* En panne */
   .steps { margin-top: 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -132,21 +132,23 @@
   .story small { display: block; margin-top: 14px; color: var(--grey); font-size: 15px; }
 
   /* Services */
-  .svc-s { background: var(--off); color: var(--black); }
-  .svc-s .intro { color: #55555b; }
+  .svc-s { background: #0f0f11; border-top: 1px solid var(--line-d); }
   .svc { margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .card { background: var(--white); border: 2px solid var(--black); border-radius: 24px; padding: 30px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; transition: background-color .25s ease, transform .25s ease; cursor: default; }
-  .card:hover { background: var(--orange); }
-  .card svg { width: 46px; height: 46px; stroke: var(--black); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-  .card h3 { font-size: clamp(26px, 3vw, 40px); margin-top: 26px; text-transform: uppercase; }
-  .card p { margin-top: 10px; color: #3d3d42; }
+  .card { background: linear-gradient(180deg, var(--black-2), #111113); border: 1px solid var(--line-d); border-radius: 24px; padding: 30px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; transition: border-color .3s ease; cursor: default; position: relative; overflow: hidden; }
+  .card::after { content: ""; position: absolute; right: -60px; top: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(rgba(255,90,26,.22), transparent 70%); opacity: 0; transition: opacity .4s ease; }
+  .card:hover { border-color: rgba(255,90,26,.7); }
+  .card:hover::after { opacity: 1; }
+  .card svg { width: 30px; height: 30px; stroke: var(--orange); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; padding: 13px; box-sizing: content-box; border-radius: 16px; background: rgba(255,90,26,.1); }
+  .card h3 { font-size: clamp(24px, 2.6vw, 34px); margin-top: 26px; text-transform: uppercase; }
+  .card p { margin-top: 10px; color: #b6b6bc; }
 
   /* Gros appel */
-  .callband { background: var(--orange); color: var(--black); padding: 110px 0; text-align: center; overflow: hidden; }
-  .callband p { font: 700 18px/1.3 "Unbounded", sans-serif; text-transform: uppercase; }
-  .callband a.tel { display: block; margin-top: 18px; text-decoration: none; font: 900 clamp(46px, 10vw, 150px)/1 "Unbounded", sans-serif; letter-spacing: -.04em; transition: letter-spacing .3s ease; }
-  .callband a.tel:hover { letter-spacing: -.02em; }
-  .callband small { display: block; margin-top: 18px; font-size: 17px; font-weight: 700; }
+  .callband { padding: 110px 0; text-align: center; overflow: hidden; border-top: 1px solid var(--line-d);
+    background: radial-gradient(ellipse 55% 70% at 50% 60%, rgba(255,90,26,.25), transparent 70%), var(--black); }
+  .callband p { font: 700 16px/1.3 "Unbounded", sans-serif; text-transform: uppercase; color: var(--orange); letter-spacing: .06em; }
+  .callband a.tel { display: block; margin-top: 20px; text-decoration: none; font: 900 clamp(44px, 9.5vw, 140px)/1 "Unbounded", sans-serif; letter-spacing: -.04em; transition: color .3s ease; }
+  .callband a.tel:hover { color: var(--orange); }
+  .callband small { display: block; margin-top: 22px; font-size: 17px; color: var(--grey); }
 
   /* Infos + contact */
   .end { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
@@ -177,9 +179,8 @@
     .hero { padding: 100px 0 80px; min-height: auto; }
     .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
     .gauge { max-width: 300px; }
-    .week { grid-template-columns: 1fr; border-radius: 18px; }
-    .wd { border-right: 0; border-bottom: 2px solid var(--black); flex-direction: row; align-items: center; min-height: 0; gap: 12px; padding: 16px 18px; }
-    .wd:last-child { border-bottom: 0; }
+    .week { grid-template-columns: 1fr; gap: 8px; }
+    .wd { flex-direction: row; align-items: center; min-height: 0; gap: 12px; padding: 16px 18px; border-radius: 14px; }
     .wd .h { margin-top: 0; margin-left: auto; font-size: 18px; text-align: right; }
     .wd .h small { display: inline; margin: 0 0 0 6px; }
     .wd.is-today::before { position: static; transform: none; margin-left: 6px; order: 2; }
