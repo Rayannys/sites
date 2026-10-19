@@ -61,22 +61,32 @@
   .top .btn { padding: 12px 18px; font-size: 15px; }
 
   /* ---------- Accueil ---------- */
-  .hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding: 110px 0 90px;
+  .hero { position: relative; overflow: hidden; padding: 116px 0 34px;
     background: radial-gradient(ellipse 50% 60% at 80% 45%, rgba(255,90,26,.22), transparent 70%), var(--black); }
   .hero::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(90deg, transparent, #000 60%); -webkit-mask-image: linear-gradient(90deg, transparent, #000 60%); pointer-events: none; }
-  .hero .wrap { position: relative; z-index: 2; width: 100%; display: grid; grid-template-columns: 1.25fr .75fr; gap: 40px; align-items: center; }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; }
+  .hero-side { padding-bottom: 8px; }
+  .rate { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; text-decoration: none; }
+  .rate b { font: 900 40px/1 "Unbounded", sans-serif; }
+  .rate span { font-size: 14px; color: var(--grey); line-height: 1.3; }
+  .rate em { display: block; font-style: normal; color: var(--orange); letter-spacing: 2px; font-size: 15px; }
+  .top-s { padding: 24px 0 90px; border-top: 0; background: var(--black); }
+  .shop-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; }
+  .h2.sm { font-size: clamp(30px, 3.6vw, 48px); margin: 0; }
+  .shop-head .intro { margin: 0; font-size: 17px; }
+  .shop { margin-top: 24px !important; }
   .live { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,.06); border: 1px solid var(--line-d); padding: 9px 16px; border-radius: 99px; font-weight: 700; font-size: 15px; }
   .live i { width: 10px; height: 10px; border-radius: 50%; background: #2ee07c; box-shadow: 0 0 14px #2ee07c; animation: blink 1.6s ease-in-out infinite; }
   .live.is-closed i { background: var(--orange); box-shadow: 0 0 14px var(--orange); }
   .live b { color: var(--orange); font-variant-numeric: tabular-nums; }
   @keyframes blink { 50% { opacity: .35; } }
-  .hero h1 { font-size: clamp(54px, 9vw, 150px); margin-top: 26px; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(46px, 6.4vw, 100px); margin-top: 20px; text-transform: uppercase; }
   .hero h1 span { display: block; overflow: hidden; }
   .hero h1 span > em { display: block; font-style: normal; transform: translateY(105%); animation: up .9s cubic-bezier(.2,.8,.2,1) forwards; }
   .hero h1 span:nth-child(2) > em { animation-delay: .12s; }
   .hero h1 span:nth-child(3) > em { animation-delay: .24s; color: var(--orange); }
   @keyframes up { to { transform: none; } }
-  .hero .lead { margin-top: 24px; font-size: 19px; color: #c6c6cc; max-width: 520px; }
+  .hero .lead { margin-top: 0; font-size: 19px; color: #c6c6cc; max-width: 520px; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
   /* Compte-tours */
@@ -94,7 +104,7 @@
   /* ---------- Sections ---------- */
   section { padding: 96px 0; position: relative; }
   .kick { color: var(--orange); font: 700 14px/1 "Unbounded", sans-serif; text-transform: uppercase; letter-spacing: .06em; }
-  .h2 { font-size: clamp(42px, 6.4vw, 92px); margin-top: 16px; text-transform: uppercase; }
+  .h2 { font-size: clamp(34px, 4.6vw, 64px); margin-top: 16px; text-transform: uppercase; }
   .intro { margin-top: 18px; max-width: 56ch; font-size: 19px; color: #c6c6cc; }
 
   /* La semaine */
@@ -133,7 +143,7 @@
 
   /* L'atelier : voiture de face interactive */
   .svc-s { background: #0f0f11; border-top: 1px solid var(--line-d); overflow: hidden; }
-  .shop { margin-top: 48px; display: grid; grid-template-columns: 1.35fr .9fr; gap: 28px; align-items: center; }
+  .shop { margin-top: 48px; display: grid; grid-template-columns: 1.35fr .9fr; gap: 28px; align-items: start; }
   .stage { position: relative; aspect-ratio: 3 / 2; border-radius: 28px; overflow: hidden; border: 1px solid var(--line-d);
     background: radial-gradient(ellipse 40% 30% at 50% 28%, rgba(255,90,26,.28), transparent 70%), linear-gradient(#0c0c0e 0 28%, #121215 28%); }
   .stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
@@ -236,7 +246,8 @@
 
   @media (max-width: 960px) {
     .top nav { display: none; }
-    .hero { padding: 100px 0 80px; min-height: auto; }
+    .hero { padding: 100px 0 24px; }
+    .top-s { padding: 20px 0 72px; }
     .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
     .gauge { max-width: 300px; }
     .week { grid-template-columns: 1fr; gap: 8px; }
@@ -280,9 +291,8 @@
   <div class="wrap">
     <a href="#" class="logo" aria-label="Mondial Autos 77, accueil"><span class="mark">77</span><b>Mondial Autos<small>Garage à Chelles</small></b></a>
     <nav aria-label="Menu">
-      <a href="#semaine">Horaires</a>
-      <a href="#panne">En panne ?</a>
       <a href="#atelier">L'atelier</a>
+      <a href="#semaine">Horaires</a>
       <a href="#contact">Contact</a>
     </nav>
     <a href="tel:+33753314384" class="btn btn-o">07 53 31 43 84</a>
@@ -296,86 +306,22 @@
       <div>
         <p class="live" id="live"><i aria-hidden="true"></i><span id="live-txt">Chelles (77)</span></p>
         <h1 id="titre"><span><em>Ouvert.</em></span><span><em>Même le</em></span><span><em>dimanche.</em></span></h1>
+      </div>
+      <div class="hero-side">
         <p class="lead">Diagnostic, réparation et entretien toutes marques à Chelles. Quand les autres garages sont fermés, nous, on décroche.</p>
         <div class="actions">
           <a href="tel:+33753314384" class="btn btn-o">Appeler maintenant</a>
-          <a href="#panne" class="btn btn-w">Je suis en panne</a>
+          <a href="#contact" class="btn btn-w">Être rappelé</a>
         </div>
-      </div>
-
-      <a class="gauge" href="https://maps.google.com/?cid=4873827584724204049" target="_blank" rel="noopener" style="text-decoration:none" aria-label="Note de 4,7 sur 5 sur 331 avis Google">
-        <svg viewBox="0 0 400 300" aria-hidden="true">
-          <defs>
-            <linearGradient id="arcG" x1="0" x2="1"><stop offset="0" stop-color="#ff5a1a" stop-opacity=".5"/><stop offset="1" stop-color="#ff5a1a"/></linearGradient>
-          </defs>
-          <!-- cadran : arc de 240° -->
-          <path d="M 61.4 280 A 160 160 0 1 1 338.6 280" fill="none" stroke="#202024" stroke-width="22" stroke-linecap="round"/>
-          <path class="arc-fill" id="arc" d="M 61.4 280 A 160 160 0 1 1 338.6 280" fill="none" stroke="url(#arcG)" stroke-width="22" stroke-linecap="round"/>
-          <g id="ticks" stroke="#9a9aa0" stroke-width="3" stroke-linecap="round"></g>
-          <g id="labels" font-family="Unbounded, Arial Black, sans-serif" font-size="18" font-weight="700" fill="#cfcfd4" text-anchor="middle"></g>
-          <text x="200" y="250" text-anchor="middle" font-family="DM Sans, Arial" font-size="13" font-weight="700" fill="#9a9aa0" letter-spacing="2">AVIS GOOGLE</text>
-          <g class="needle" id="needle">
-            <path d="M200 200 L196 205 L200 62 L204 205 Z" fill="#ff5a1a"/>
-          </g>
-          <circle cx="200" cy="200" r="18" fill="#0b0b0c" stroke="#ff5a1a" stroke-width="4"/>
-        </svg>
-        <div class="gauge-cap"><b>4,7<small>/5</small></b><p>sur 331 avis clients</p></div>
-      </a>
-    </div>
-  </section>
-
-  <div class="tape" aria-hidden="true"><div class="track">
-    <span></span><span>Ouvert le dimanche</span><span></span><span>Toutes marques</span><span></span><span>Chelles 77</span><span></span><span>Ouvert le dimanche</span><span></span><span>Toutes marques</span><span></span><span>Chelles 77</span><span></span>
-  </div></div>
-
-  <!-- ============ SEMAINE ============ -->
-  <section class="week-s" id="semaine" aria-labelledby="t-week">
-    <div class="wrap">
-      <p class="kick">Horaires</p>
-      <h2 class="h2" id="t-week">6 jours sur 7.</h2>
-      <p class="intro">Le seul jour où l'on souffle, c'est le lundi.</p>
-      <div class="week reveal" id="week">
-        <div class="wd" data-d="2"><span class="n">Mardi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
-        <div class="wd" data-d="3"><span class="n">Mercredi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
-        <div class="wd" data-d="4"><span class="n">Jeudi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
-        <div class="wd" data-d="5"><span class="n">Vendredi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
-        <div class="wd" data-d="6"><span class="n">Samedi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
-        <div class="wd sun" data-d="0"><span class="n">Dimanche</span><span class="h">9h-20h<small>Oui, ouvert</small></span></div>
-        <div class="wd off" data-d="1"><span class="n">Lundi</span><span class="h">Repos<small>Fermé</small></span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EN PANNE ============ -->
-  <section id="panne" aria-labelledby="t-panne">
-    <div class="wrap">
-      <p class="kick">En panne ?</p>
-      <h2 class="h2" id="t-panne">On gère.<br>De A à Z.</h2>
-      <p class="intro">Votre voiture vous lâche, même un dimanche ? Vous n'avez qu'une chose à faire : appeler.</p>
-      <div class="steps">
-        <article class="step hot reveal"><span class="num">01</span><h3>Vous appelez</h3><p>Un seul numéro, et on s'occupe du reste.</p></article>
-        <article class="step reveal"><span class="num">02</span><h3>On organise le remorquage</h3><p>Pas besoin de chercher une dépanneuse, on s'en charge.</p></article>
-        <article class="step reveal"><span class="num">03</span><h3>Diagnostic en quelques heures</h3><p>On trouve la vraie cause de la panne et on vous explique.</p></article>
-        <article class="step reveal"><span class="num">04</span><h3>Vous repartez</h3><p>Dès que la pièce arrive, votre voiture est prête.</p></article>
-      </div>
-
-      <div class="story reveal">
-        <span class="gb" aria-hidden="true">GB</span>
-        <div>
-          <blockquote>Venu d'Angleterre, il tombe en panne un dimanche. <em>On était le seul garage ouvert.</em> Remorquage, diagnostic, réparation.</blockquote>
-          <small>Histoire racontée par un client dans les avis Google.</small>
-        </div>
+        <a class="rate" href="https://maps.google.com/?cid=4873827584724204049" target="_blank" rel="noopener"><b>4,7</b><span><em aria-hidden="true">★★★★★</em>331 avis Google</span></a>
       </div>
     </div>
   </section>
 
   <!-- ============ L'ATELIER : VOITURE DE FACE ============ -->
-  <section id="atelier" class="svc-s" aria-labelledby="t-svc">
+  <section id="atelier" class="svc-s top-s" aria-labelledby="t-svc">
     <div class="wrap">
-      <p class="kick">L'atelier</p>
-      <h2 class="h2" id="t-svc">Touchez<br>la panne.</h2>
-      <p class="intro">Toutes marques, de la citadine au SUV. Cliquez sur la partie de la voiture qui vous inquiète.</p>
-
+      <div class="shop-head"><h2 class="h2 sm" id="t-svc">Touchez la panne.</h2><p class="intro">Cliquez sur la partie de la voiture qui vous inquiète.</p></div>
       <div class="shop">
         <div class="stage" id="stage">
           <svg viewBox="0 0 600 400" aria-hidden="true">
@@ -529,11 +475,21 @@
     </div>
   </section>
 
-  <!-- ============ GROS APPEL ============ -->
-  <section class="callband" aria-label="Appeler le garage">
+  <!-- ============ SEMAINE ============ -->
+  <section class="week-s" id="semaine" aria-labelledby="t-week">
     <div class="wrap">
-      <p>Un doute, une panne, un voyant ?</p>
-      <a class="tel" href="tel:+33753314384">07 53 31 43 84</a>
+      <p class="kick">Horaires</p>
+      <h2 class="h2" id="t-week">6 jours sur 7.</h2>
+      <p class="intro">Le seul jour où l'on souffle, c'est le lundi.</p>
+      <div class="week reveal" id="week">
+        <div class="wd" data-d="2"><span class="n">Mardi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="3"><span class="n">Mercredi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="4"><span class="n">Jeudi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="5"><span class="n">Vendredi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="6"><span class="n">Samedi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd sun" data-d="0"><span class="n">Dimanche</span><span class="h">9h-20h<small>Oui, ouvert</small></span></div>
+        <div class="wd off" data-d="1"><span class="n">Lundi</span><span class="h">Repos<small>Fermé</small></span></div>
+      </div>
     </div>
   </section>
 
@@ -592,30 +548,6 @@
 <div class="callbar"><a href="tel:+33753314384" class="btn btn-o">Appeler le 07 53 31 43 84</a></div>
 
 <script>
-// ---------- Compte-tours : graduations et position de l'aiguille ----------
-(function () {
-  var cx = 200, cy = 200, r = 160, ticks = document.getElementById('ticks'), labels = document.getElementById('labels');
-  // le cadran va de -120° (0) à +120° (5)
-  for (var i = 0; i <= 50; i++) {
-    var a = (-120 + i * 4.8) * Math.PI / 180, big = i % 10 === 0;
-    var r1 = r - 26, r2 = r - (big ? 46 : 34);
-    var l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    l.setAttribute('x1', cx + r1 * Math.sin(a)); l.setAttribute('y1', cy - r1 * Math.cos(a));
-    l.setAttribute('x2', cx + r2 * Math.sin(a)); l.setAttribute('y2', cy - r2 * Math.cos(a));
-    if (big) l.setAttribute('stroke', '#ffffff');
-    ticks.appendChild(l);
-    if (big) {
-      var t = document.createElementNS('http://www.w3.org/2000/svg', 'text'), rr = r - 68;
-      t.setAttribute('x', cx + rr * Math.sin(a)); t.setAttribute('y', cy - rr * Math.cos(a) + 6);
-      t.textContent = i / 10; labels.appendChild(t);
-    }
-  }
-  var note = 4.7, angle = -120 + note / 5 * 240;
-  document.getElementById('needle').style.setProperty('--to', angle + 'deg');
-  var arc = document.getElementById('arc'), len = arc.getTotalLength();
-  arc.style.setProperty('--len', (len * note / 5).toFixed(1));
-})();
-
 // ---------- Ouvert / fermé avec compte à rebours (heure de Paris) ----------
 (function () {
   var noms = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
