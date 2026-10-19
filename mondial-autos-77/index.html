@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mondial Autos 77 - Garage à Chelles, ouvert le dimanche</title>
+<meta name="description" content="Mondial Autos 77, garage à Chelles ouvert du mardi au dimanche de 9h à 20h : diagnostic, réparation, entretien. 07 53 31 43 84.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0b0b0c;
+    --black-2: #151517;
+    --black-3: #202024;
+    --white: #ffffff;
+    --off: #f3f3f1;
+    --grey: #9a9aa0;
+    --orange: #ff5a1a;
+    --orange-2: #ff7a3d;
+    --line-d: rgba(255,255,255,.12);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { margin: 0; background: var(--black); color: var(--white); font-family: "DM Sans", "Segoe UI", Arial, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  h1, h2, h3 { font-family: "Unbounded", "Arial Black", sans-serif; margin: 0; line-height: .95; letter-spacing: -.03em; font-weight: 900; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+  .demo { background: #fff3c4; color: #5c4a00; font-size: 13px; text-align: center; padding: 6px 12px; position: relative; z-index: 60; }
+
+  /* ---------- Ruban de chantier (signature) ---------- */
+  .tape { height: 46px; overflow: hidden; position: relative; background: var(--orange); transform: rotate(-2deg); margin: -10px -20px; box-shadow: 0 10px 30px rgba(0,0,0,.4); z-index: 5; }
+  .tape .track { display: flex; width: max-content; height: 100%; align-items: center; }
+  .tape span { display: inline-flex; align-items: center; height: 100%; padding: 0 22px; font: 900 18px/1 "Unbounded", sans-serif; color: var(--black); text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+  .tape span:nth-child(odd) { background: repeating-linear-gradient(-45deg, var(--black) 0 16px, var(--orange) 16px 32px); color: transparent; width: 120px; padding: 0; }
+  .tape.alt { transform: rotate(1.5deg); background: var(--white); }
+  .tape.alt span:nth-child(odd) { background: repeating-linear-gradient(-45deg, var(--black) 0 16px, var(--white) 16px 32px); }
+  .tape.alt .track { animation-direction: reverse; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- En-tête ---------- */
+  .top { position: absolute; left: 0; right: 0; z-index: 30; }
+  .top .wrap { height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo .mark { width: 42px; height: 42px; border-radius: 12px; background: var(--orange); display: grid; place-items: center; font: 900 17px/1 "Unbounded", sans-serif; color: var(--black); }
+  .logo b { font: 700 17px/1.1 "Unbounded", sans-serif; letter-spacing: -.02em; }
+  .logo b small { display: block; font: 500 12px/1.3 "DM Sans", sans-serif; color: var(--grey); letter-spacing: 0; }
+  .top nav { display: flex; gap: 30px; }
+  .top nav a { text-decoration: none; color: #cfcfd4; font-weight: 500; font-size: 15px; }
+  .top nav a:hover { color: var(--orange); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font: 700 16px/1 "DM Sans", sans-serif; border-radius: 999px; padding: 17px 26px; border: 2px solid transparent; cursor: pointer; transition: transform .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-o { background: var(--orange); color: var(--black); box-shadow: 0 12px 34px -10px rgba(255,90,26,.75); }
+  .btn-o:hover { background: var(--orange-2); }
+  .btn-w { border-color: rgba(255,255,255,.4); color: var(--white); }
+  .btn-w:hover { background: var(--white); color: var(--black); }
+  .top .btn { padding: 12px 18px; font-size: 15px; }
+
+  /* ---------- Accueil ---------- */
+  .hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding: 110px 0 90px;
+    background: radial-gradient(ellipse 50% 60% at 80% 45%, rgba(255,90,26,.22), transparent 70%), var(--black); }
+  .hero::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(90deg, transparent, #000 60%); -webkit-mask-image: linear-gradient(90deg, transparent, #000 60%); pointer-events: none; }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; display: grid; grid-template-columns: 1.25fr .75fr; gap: 40px; align-items: center; }
+  .live { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,.06); border: 1px solid var(--line-d); padding: 9px 16px; border-radius: 99px; font-weight: 700; font-size: 15px; }
+  .live i { width: 10px; height: 10px; border-radius: 50%; background: #2ee07c; box-shadow: 0 0 14px #2ee07c; animation: blink 1.6s ease-in-out infinite; }
+  .live.is-closed i { background: var(--orange); box-shadow: 0 0 14px var(--orange); }
+  .live b { color: var(--orange); font-variant-numeric: tabular-nums; }
+  @keyframes blink { 50% { opacity: .35; } }
+  .hero h1 { font-size: clamp(54px, 9vw, 150px); margin-top: 26px; text-transform: uppercase; }
+  .hero h1 span { display: block; overflow: hidden; }
+  .hero h1 span > em { display: block; font-style: normal; transform: translateY(105%); animation: up .9s cubic-bezier(.2,.8,.2,1) forwards; }
+  .hero h1 span:nth-child(2) > em { animation-delay: .12s; }
+  .hero h1 span:nth-child(3) > em { animation-delay: .24s; color: var(--orange); }
+  @keyframes up { to { transform: none; } }
+  .hero .lead { margin-top: 24px; font-size: 19px; color: #c6c6cc; max-width: 520px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+  /* Compte-tours */
+  .gauge { width: 100%; max-width: 440px; justify-self: center; }
+  .gauge svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .gauge .needle { transform-origin: 200px 200px; transform: rotate(-120deg); animation: rev 2.2s cubic-bezier(.3,1.4,.4,1) .6s forwards; }
+  @keyframes rev { 0% { transform: rotate(-120deg); } 55% { transform: rotate(118deg); } 100% { transform: rotate(var(--to, 92deg)); } }
+  .gauge .arc-fill { stroke-dasharray: 0 1000; animation: fillArc 2s ease .8s forwards; }
+  @keyframes fillArc { to { stroke-dasharray: var(--len, 500) 1000; } }
+  .gauge-cap { text-align: center; margin-top: -6px; }
+  .gauge-cap b { font: 900 64px/1 "Unbounded", sans-serif; }
+  .gauge-cap b small { font-size: 26px; color: var(--grey); }
+  .gauge-cap p { color: var(--grey); margin-top: 6px; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 96px 0; position: relative; }
+  .kick { color: var(--orange); font: 700 14px/1 "Unbounded", sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+  .h2 { font-size: clamp(42px, 6.4vw, 92px); margin-top: 16px; text-transform: uppercase; }
+  .intro { margin-top: 18px; max-width: 56ch; font-size: 19px; color: #c6c6cc; }
+
+  /* La semaine */
+  .week-s { background: var(--off); color: var(--black); padding: 110px 0 96px; }
+  .week-s .intro { color: #55555b; }
+  .week { margin-top: 52px; display: grid; grid-template-columns: repeat(7, 1fr); border: 2px solid var(--black); border-radius: 22px; overflow: hidden; }
+  .wd { padding: 24px 16px 22px; border-right: 2px solid var(--black); display: flex; flex-direction: column; gap: 40px; min-height: 240px; position: relative; transition: background-color .3s ease; }
+  .wd:last-child { border-right: 0; }
+  .wd .n { font: 900 15px/1 "Unbounded", sans-serif; text-transform: uppercase; }
+  .wd.is-today .n { margin-top: 30px; }
+  .wd .h { margin-top: auto; font: 700 26px/1 "Unbounded", sans-serif; }
+  .wd .h small { display: block; font: 500 14px/1.4 "DM Sans", sans-serif; color: #66666c; margin-top: 6px; }
+  .wd.sun { background: var(--orange); }
+  .wd.sun .h small { color: var(--black); }
+  .wd.off { background: repeating-linear-gradient(-45deg, #e6e6e3 0 12px, var(--off) 12px 24px); color: #8b8b90; }
+  .wd.is-today { background: var(--black); color: var(--white); }
+  .wd.is-today .h small { color: #b0b0b6; }
+  .wd.is-today::before { content: "Aujourd'hui"; position: absolute; top: 12px; right: 10px; background: var(--orange); color: var(--black); font: 700 12px/1 "DM Sans", sans-serif; padding: 6px 10px; border-radius: 99px; }
+
+  /* En panne */
+  .steps { margin-top: 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .step { background: var(--black-2); border: 1px solid var(--line-d); border-radius: 24px; padding: 28px 24px 30px; position: relative; overflow: hidden; min-height: 300px; display: flex; flex-direction: column; transition: transform .3s ease, border-color .3s ease; }
+  .step:hover { border-color: var(--orange); }
+  .step .num { font: 900 92px/.8 "Unbounded", sans-serif; color: transparent; -webkit-text-stroke: 2px rgba(255,90,26,.85); }
+  .step h3 { font-size: 22px; line-height: 1.12; margin-top: auto; padding-top: 30px; }
+  .step p { color: #b6b6bc; margin-top: 10px; font-size: 16px; }
+  .step.hot { background: var(--orange); color: var(--black); border-color: var(--orange); }
+  .step.hot .num { -webkit-text-stroke: 2px var(--black); }
+  .step.hot p { color: #2a1206; }
+
+  .story { margin-top: 90px; display: grid; grid-template-columns: auto 1fr; gap: 34px; align-items: center; }
+  .gb { width: 120px; height: 78px; border-radius: 50%; background: var(--white); color: var(--black); border: 5px solid var(--black); box-shadow: 0 0 0 3px var(--white); display: grid; place-items: center; font: 900 30px/1 "Unbounded", sans-serif; transform: rotate(-8deg); }
+  .story blockquote { margin: 0; font: 700 clamp(22px, 2.6vw, 36px)/1.25 "Unbounded", sans-serif; letter-spacing: -.02em; }
+  .story blockquote em { font-style: normal; color: var(--orange); }
+  .story small { display: block; margin-top: 14px; color: var(--grey); font-size: 15px; }
+
+  /* Services */
+  .svc-s { background: var(--off); color: var(--black); }
+  .svc-s .intro { color: #55555b; }
+  .svc { margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .card { background: var(--white); border: 2px solid var(--black); border-radius: 24px; padding: 30px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; transition: background-color .25s ease, transform .25s ease; cursor: default; }
+  .card:hover { background: var(--orange); }
+  .card svg { width: 46px; height: 46px; stroke: var(--black); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .card h3 { font-size: clamp(26px, 3vw, 40px); margin-top: 26px; text-transform: uppercase; }
+  .card p { margin-top: 10px; color: #3d3d42; }
+
+  /* Gros appel */
+  .callband { background: var(--orange); color: var(--black); padding: 110px 0; text-align: center; overflow: hidden; }
+  .callband p { font: 700 18px/1.3 "Unbounded", sans-serif; text-transform: uppercase; }
+  .callband a.tel { display: block; margin-top: 18px; text-decoration: none; font: 900 clamp(46px, 10vw, 150px)/1 "Unbounded", sans-serif; letter-spacing: -.04em; transition: letter-spacing .3s ease; }
+  .callband a.tel:hover { letter-spacing: -.02em; }
+  .callband small { display: block; margin-top: 18px; font-size: 17px; font-weight: 700; }
+
+  /* Infos + contact */
+  .end { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+  .panel { background: var(--black-2); border: 1px solid var(--line-d); border-radius: 26px; padding: 32px; }
+  .panel h3 { font-size: 26px; text-transform: uppercase; }
+  .panel p { color: #c6c6cc; margin-top: 12px; }
+  .plan { display: block; position: relative; margin-top: 22px; border-radius: 18px; overflow: hidden; text-decoration: none; border: 1px solid var(--line-d); }
+  .plan svg { width: 100%; height: auto; display: block; }
+  .plan span { position: absolute; right: 12px; bottom: 12px; background: var(--orange); color: var(--black); font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 99px; }
+  form { display: grid; gap: 12px; margin-top: 20px; }
+  label { display: grid; gap: 6px; font-size: 14px; font-weight: 700; color: #d4d4d9; }
+  input, select { font: inherit; color: var(--white); background: var(--black-3); border: 1.5px solid var(--line-d); border-radius: 14px; padding: 14px; }
+  input:focus, select:focus { outline: none; border-color: var(--orange); }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .seg button { font: 700 14px "DM Sans", sans-serif; padding: 12px 6px; border-radius: 12px; border: 1.5px solid var(--line-d); background: transparent; color: #d4d4d9; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: var(--black); }
+  .note-form { min-height: 1.2em; color: var(--orange); font-weight: 700; font-size: 14px; }
+
+  footer { padding: 40px 0 110px; border-top: 1px solid var(--line-d); color: var(--grey); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+  .callbar { display: none; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .top nav { display: none; }
+    .hero { padding: 100px 0 80px; min-height: auto; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
+    .gauge { max-width: 300px; }
+    .week { grid-template-columns: 1fr; border-radius: 18px; }
+    .wd { border-right: 0; border-bottom: 2px solid var(--black); flex-direction: row; align-items: center; min-height: 0; gap: 12px; padding: 16px 18px; }
+    .wd:last-child { border-bottom: 0; }
+    .wd .h { margin-top: 0; margin-left: auto; font-size: 18px; text-align: right; }
+    .wd .h small { display: inline; margin: 0 0 0 6px; }
+    .wd.is-today::before { position: static; transform: none; margin-left: 6px; order: 2; }
+    .wd.is-today .n { margin-top: 0; }
+    .wd .h { order: 3; }
+    .steps, .svc, .end { grid-template-columns: 1fr; }
+    .step { min-height: 0; }
+    .story { grid-template-columns: 1fr; gap: 24px; }
+    section, .week-s { padding: 84px 0; }
+    .callbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(11,11,12,.92); backdrop-filter: blur(8px); border-top: 1px solid var(--line-d); }
+    .callbar a { flex: 1; }
+  }
+  @media (max-width: 460px) {
+    .top .btn { display: none; }
+    .actions .btn { flex: 1 1 100%; }
+    .panel { padding: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero h1 span > em { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo">Maquette de démonstration réalisée par Rayann Ilkay pour Mondial Autos 77. Ce n'est pas le site officiel.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="Mondial Autos 77, accueil"><span class="mark">77</span><b>Mondial Autos<small>Garage à Chelles</small></b></a>
+    <nav aria-label="Menu">
+      <a href="#semaine">Horaires</a>
+      <a href="#panne">En panne ?</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+33753314384" class="btn btn-o">07 53 31 43 84</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ ACCUEIL ============ -->
+  <section class="hero" aria-labelledby="titre">
+    <div class="wrap">
+      <div>
+        <p class="live" id="live"><i aria-hidden="true"></i><span id="live-txt">Chelles (77)</span></p>
+        <h1 id="titre"><span><em>Ouvert.</em></span><span><em>Même le</em></span><span><em>dimanche.</em></span></h1>
+        <p class="lead">Diagnostic, réparation et entretien toutes marques à Chelles. Quand les autres garages sont fermés, nous, on décroche.</p>
+        <div class="actions">
+          <a href="tel:+33753314384" class="btn btn-o">Appeler maintenant</a>
+          <a href="#panne" class="btn btn-w">Je suis en panne</a>
+        </div>
+      </div>
+
+      <a class="gauge" href="https://maps.google.com/?cid=4873827584724204049" target="_blank" rel="noopener" style="text-decoration:none" aria-label="Note de 4,7 sur 5 sur 331 avis Google">
+        <svg viewBox="0 0 400 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="arcG" x1="0" x2="1"><stop offset="0" stop-color="#ff5a1a" stop-opacity=".5"/><stop offset="1" stop-color="#ff5a1a"/></linearGradient>
+          </defs>
+          <!-- cadran : arc de 240° -->
+          <path d="M 61.4 280 A 160 160 0 1 1 338.6 280" fill="none" stroke="#202024" stroke-width="22" stroke-linecap="round"/>
+          <path class="arc-fill" id="arc" d="M 61.4 280 A 160 160 0 1 1 338.6 280" fill="none" stroke="url(#arcG)" stroke-width="22" stroke-linecap="round"/>
+          <g id="ticks" stroke="#9a9aa0" stroke-width="3" stroke-linecap="round"></g>
+          <g id="labels" font-family="Unbounded, Arial Black, sans-serif" font-size="18" font-weight="700" fill="#cfcfd4" text-anchor="middle"></g>
+          <text x="200" y="250" text-anchor="middle" font-family="DM Sans, Arial" font-size="13" font-weight="700" fill="#9a9aa0" letter-spacing="2">AVIS GOOGLE</text>
+          <g class="needle" id="needle">
+            <path d="M200 200 L196 205 L200 62 L204 205 Z" fill="#ff5a1a"/>
+          </g>
+          <circle cx="200" cy="200" r="18" fill="#0b0b0c" stroke="#ff5a1a" stroke-width="4"/>
+        </svg>
+        <div class="gauge-cap"><b>4,7<small>/5</small></b><p>sur 331 avis clients</p></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"><div class="track">
+    <span></span><span>Ouvert le dimanche</span><span></span><span>Toutes marques</span><span></span><span>Chelles 77</span><span></span><span>Ouvert le dimanche</span><span></span><span>Toutes marques</span><span></span><span>Chelles 77</span><span></span>
+  </div></div>
+
+  <!-- ============ SEMAINE ============ -->
+  <section class="week-s" id="semaine" aria-labelledby="t-week">
+    <div class="wrap">
+      <p class="kick">Horaires</p>
+      <h2 class="h2" id="t-week">6 jours sur 7.</h2>
+      <p class="intro">Le seul jour où l'on souffle, c'est le lundi.</p>
+      <div class="week reveal" id="week">
+        <div class="wd" data-d="2"><span class="n">Mardi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="3"><span class="n">Mercredi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="4"><span class="n">Jeudi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="5"><span class="n">Vendredi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd" data-d="6"><span class="n">Samedi</span><span class="h">9h-20h<small>Ouvert</small></span></div>
+        <div class="wd sun" data-d="0"><span class="n">Dimanche</span><span class="h">9h-20h<small>Oui, ouvert</small></span></div>
+        <div class="wd off" data-d="1"><span class="n">Lundi</span><span class="h">Repos<small>Fermé</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EN PANNE ============ -->
+  <section id="panne" aria-labelledby="t-panne">
+    <div class="wrap">
+      <p class="kick">En panne ?</p>
+      <h2 class="h2" id="t-panne">On gère.<br>De A à Z.</h2>
+      <p class="intro">Votre voiture vous lâche, même un dimanche ? Vous n'avez qu'une chose à faire : appeler.</p>
+      <div class="steps">
+        <article class="step hot reveal"><span class="num">01</span><h3>Vous appelez</h3><p>Un seul numéro, et on s'occupe du reste.</p></article>
+        <article class="step reveal"><span class="num">02</span><h3>On organise le remorquage</h3><p>Pas besoin de chercher une dépanneuse, on s'en charge.</p></article>
+        <article class="step reveal"><span class="num">03</span><h3>Diagnostic en quelques heures</h3><p>On trouve la vraie cause de la panne et on vous explique.</p></article>
+        <article class="step reveal"><span class="num">04</span><h3>Vous repartez</h3><p>Dès que la pièce arrive, votre voiture est prête.</p></article>
+      </div>
+
+      <div class="story reveal">
+        <span class="gb" aria-hidden="true">GB</span>
+        <div>
+          <blockquote>Venu d'Angleterre, il tombe en panne un dimanche. <em>On était le seul garage ouvert.</em> Remorquage, diagnostic, réparation.</blockquote>
+          <small>Histoire racontée par un client dans les avis Google.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="svc-s" aria-labelledby="t-svc">
+    <div class="wrap">
+      <p class="kick">L'atelier</p>
+      <h2 class="h2" id="t-svc">Toutes marques.<br>Tout ce qui roule.</h2>
+      <p class="intro">Citadine, familiale ou SUV haut de gamme, on s'en occupe.</p>
+      <div class="svc">
+        <article class="card reveal"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5M11 8v3l2 2"/></svg><div><h3>Diagnostic</h3><p>Voyant allumé, bruit, perte de puissance : on cherche la vraie cause avant de changer quoi que ce soit.</p></div></article>
+        <article class="card reveal"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg><div><h3>Réparation</h3><p>Moteur, refroidissement, freins, embrayage et réparations du quotidien.</p></div></article>
+        <article class="card reveal"><svg viewBox="0 0 24 24"><path d="M12 3s5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 5-9 5-9z"/><path d="M10 14a2 2 0 0 0 2 2"/></svg><div><h3>Entretien</h3><p>Vidange, filtres, révision et contrôle avant un long trajet.</p></div></article>
+        <article class="card reveal"><svg viewBox="0 0 24 24"><path d="M2 16V9h11v7M13 11h5l3 3v2h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><div><h3>Remorquage</h3><p>En panne sur la route ? On organise la dépanneuse jusqu'à l'atelier.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GROS APPEL ============ -->
+  <section class="callband" aria-label="Appeler le garage">
+    <div class="wrap">
+      <p>Un doute, une panne, un voyant ?</p>
+      <a class="tel" href="tel:+33753314384">07 53 31 43 84</a>
+    </div>
+  </section>
+
+  <!-- ============ INFOS + CONTACT ============ -->
+  <section id="contact" aria-labelledby="t-contact">
+    <div class="wrap">
+      <p class="kick">Venir ou nous écrire</p>
+      <h2 class="h2" id="t-contact">À deux pas<br>de chez vous.</h2>
+      <div class="end">
+        <div class="panel reveal">
+          <h3>Le garage</h3>
+          <p>7 rue Auguste Meunier, 77500 Chelles</p>
+          <a class="plan" href="https://maps.google.com/?cid=4873827584724204049" target="_blank" rel="noopener" aria-label="Ouvrir l'itinéraire dans Google Maps">
+            <svg viewBox="0 0 400 240" aria-hidden="true">
+              <rect width="400" height="240" fill="#151517"/>
+              <g fill="#202024"><rect x="16" y="16" width="118" height="82" rx="10"/><rect x="164" y="16" width="98" height="82" rx="10"/><rect x="292" y="16" width="92" height="82" rx="10"/><rect x="16" y="142" width="118" height="82" rx="10"/><rect x="164" y="142" width="98" height="82" rx="10"/><rect x="292" y="142" width="92" height="82" rx="10"/></g>
+              <rect x="0" y="106" width="400" height="28" fill="#2a2a2f"/>
+              <path d="M0 120 H400" stroke="#ff5a1a" stroke-width="2" stroke-dasharray="16 12" opacity=".8"/>
+              <rect x="140" y="0" width="18" height="240" fill="#2a2a2f"/><rect x="268" y="0" width="18" height="240" fill="#2a2a2f"/>
+              <text x="12" y="101" font-family="DM Sans, Arial" font-size="12" font-weight="700" fill="#9a9aa0">Rue Auguste Meunier</text>
+              <circle cx="213" cy="62" r="34" fill="#ff5a1a" opacity=".18"/>
+              <rect x="193" y="42" width="40" height="40" rx="10" fill="#ff5a1a"/>
+              <text x="213" y="69" text-anchor="middle" font-family="Unbounded, Arial Black" font-size="16" font-weight="900" fill="#0b0b0c">77</text>
+            </svg>
+            <span>Itinéraire</span>
+          </a>
+        </div>
+        <div class="panel reveal">
+          <h3>On vous rappelle</h3>
+          <p>Laissez votre numéro, on vous rappelle pendant les heures d'ouverture, dimanche compris.</p>
+          <form id="form">
+            <div class="seg" role="group" aria-label="Votre demande">
+              <button type="button" aria-pressed="true">Une panne</button>
+              <button type="button" aria-pressed="false">Un voyant</button>
+              <button type="button" aria-pressed="false">Un entretien</button>
+            </div>
+            <label>Votre prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+            <label>Votre téléphone<input type="tel" name="tel" autocomplete="tel" required></label>
+            <label>Votre voiture<input type="text" name="voiture" placeholder="Ex. : Peugeot 308 de 2018"></label>
+            <button type="submit" class="btn btn-o">Être rappelé</button>
+            <p class="note-form" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo"><span class="mark" style="width:34px;height:34px;font-size:14px">77</span><b style="font-size:15px">Mondial Autos</b></span>
+    <p>7 rue Auguste Meunier, 77500 Chelles &middot; <a href="#">Mentions légales</a></p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+33753314384" class="btn btn-o">Appeler le 07 53 31 43 84</a></div>
+
+<script>
+// ---------- Compte-tours : graduations et position de l'aiguille ----------
+(function () {
+  var cx = 200, cy = 200, r = 160, ticks = document.getElementById('ticks'), labels = document.getElementById('labels');
+  // le cadran va de -120° (0) à +120° (5)
+  for (var i = 0; i <= 50; i++) {
+    var a = (-120 + i * 4.8) * Math.PI / 180, big = i % 10 === 0;
+    var r1 = r - 26, r2 = r - (big ? 46 : 34);
+    var l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    l.setAttribute('x1', cx + r1 * Math.sin(a)); l.setAttribute('y1', cy - r1 * Math.cos(a));
+    l.setAttribute('x2', cx + r2 * Math.sin(a)); l.setAttribute('y2', cy - r2 * Math.cos(a));
+    if (big) l.setAttribute('stroke', '#ffffff');
+    ticks.appendChild(l);
+    if (big) {
+      var t = document.createElementNS('http://www.w3.org/2000/svg', 'text'), rr = r - 68;
+      t.setAttribute('x', cx + rr * Math.sin(a)); t.setAttribute('y', cy - rr * Math.cos(a) + 6);
+      t.textContent = i / 10; labels.appendChild(t);
+    }
+  }
+  var note = 4.7, angle = -120 + note / 5 * 240;
+  document.getElementById('needle').style.setProperty('--to', angle + 'deg');
+  var arc = document.getElementById('arc'), len = arc.getTotalLength();
+  arc.style.setProperty('--len', (len * note / 5).toFixed(1));
+})();
+
+// ---------- Ouvert / fermé avec compte à rebours (heure de Paris) ----------
+(function () {
+  var noms = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  function paris() { return new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' })); }
+  function fmt(min) { var h = Math.floor(min / 60), m = min % 60; return (h ? h + ' h ' : '') + (m < 10 && h ? '0' : '') + m + ' min'; }
+  function tick() {
+    var n = paris(), d = n.getDay(), t = n.getHours() * 60 + n.getMinutes();
+    var openDay = d !== 1, open = openDay && t >= 540 && t < 1200;
+    var el = document.getElementById('live'), txt = document.getElementById('live-txt');
+    if (open) { txt.innerHTML = 'Ouvert maintenant, ferme dans <b>' + fmt(1200 - t) + '</b>'; el.classList.remove('is-closed'); }
+    else {
+      var next = d, add = 0;
+      if (openDay && t < 540) { add = 540 - t; }
+      else { next = (d + 1) % 7; if (next === 1) next = 2; var days = (next - d + 7) % 7; add = days * 1440 - t + 540; }
+      txt.innerHTML = 'Fermé, ouvre ' + (add < 1440 && next === d ? "aujourd'hui" : noms[next]) + ' à 9h, dans <b>' + fmt(add) + '</b>';
+      el.classList.add('is-closed');
+    }
+    var tile = document.querySelector('.wd[data-d="' + d + '"]');
+    document.querySelectorAll('.wd').forEach(function (w) { w.classList.toggle('is-today', w === tile); });
+  }
+  tick(); setInterval(tick, 30000);
+})();
+
+// ---------- Choix du type de demande ----------
+document.querySelectorAll('.seg button').forEach(function (b) {
+  b.addEventListener('click', function () { document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); });
+});
+document.getElementById('form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  this.querySelector('.note-form').textContent = 'Maquette : sur le vrai site, la demande arrivera directement au garage par SMS ou par e-mail.';
+});
+
+// ---------- Apparitions au défilement ----------
+var io = new IntersectionObserver(function (es) {
+  es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+}, { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
+</script>
+</body>
+</html>

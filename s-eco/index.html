@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S-ECO - Plombier et serrurier à Aubervilliers</title>
+<meta name="description" content="S-ECO, plombier et serrurier à Aubervilliers : fuites, WC bouchés, chauffe-eau, ouverture de porte. Intervention rapide, même le dimanche. 06 09 55 66 93.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0f3a42;      /* bleu pétrole */
+    --deep-2: #164c56;
+    --copper: #b8732e;    /* cuivre, comme les tuyaux */
+    --copper-soft: #f4e6d8;
+    --ink: #1b2326;
+    --muted: #5d6b6f;
+    --line: #dde3e4;
+    --bg: #f5f7f7;
+    --white: #ffffff;
+    --open: #1f8a5b;
+    --closed: #b4432a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Barlow", "Segoe UI", Arial, sans-serif; color: var(--ink); background: var(--bg); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; margin: 0; line-height: 1.05; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  :focus-visible { outline: 3px solid var(--copper); outline-offset: 3px; }
+
+  /* Bandeau maquette */
+  .demo { background: #fff3c4; color: #5c4a00; font-size: 13px; text-align: center; padding: 6px 12px; }
+
+  /* En-tête */
+  .top { background: var(--white); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+  .brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+  .brand b { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 28px; letter-spacing: .5px; color: var(--deep); }
+  .brand span { color: var(--muted); font-size: 14px; }
+  .top nav { display: flex; gap: 22px; }
+  .top nav a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; }
+  .top nav a:hover { color: var(--deep); }
+  .call-sm { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: var(--copper); color: #fff; font-weight: 600; padding: 9px 16px; border-radius: 6px; white-space: nowrap; }
+  .call-sm:hover { background: #a1631f; }
+
+  /* Accueil */
+  .hero { background: var(--deep); color: #fff; padding: 56px 0 64px; position: relative; overflow: hidden; }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.3fr .9fr; gap: 40px; align-items: end; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; background: rgba(255,255,255,.1); padding: 5px 12px; border-radius: 99px; }
+  .status i { width: 9px; height: 9px; border-radius: 50%; background: var(--open); display: inline-block; }
+  .status.is-closed i { background: #e2765c; }
+  .hero h1 { font-size: clamp(40px, 6.2vw, 68px); font-weight: 800; margin-top: 18px; max-width: 14ch; }
+  .hero .lead { margin-top: 18px; font-size: 19px; color: #d5e3e5; max-width: 46ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .call-lg { display: inline-flex; flex-direction: column; text-decoration: none; background: var(--copper); color: #fff; padding: 12px 22px; border-radius: 8px; }
+  .call-lg small { font-size: 13px; opacity: .85; }
+  .call-lg strong { font-family: "Barlow Condensed", sans-serif; font-size: 30px; letter-spacing: .5px; line-height: 1.1; }
+  .call-lg:hover { background: #a1631f; }
+  .ghost { display: inline-flex; align-items: center; text-decoration: none; border: 2px solid rgba(255,255,255,.4); color: #fff; padding: 0 20px; border-radius: 8px; font-weight: 600; }
+  .ghost:hover { border-color: #fff; }
+
+  .rating { background: var(--white); color: var(--ink); border-radius: 10px; padding: 20px 22px; }
+  .rating .score { font-family: "Barlow Condensed", sans-serif; font-size: 54px; font-weight: 800; line-height: 1; color: var(--deep); }
+  .rating .score span { font-size: 24px; color: var(--muted); }
+  .stars { color: #e3a21a; font-size: 20px; letter-spacing: 2px; margin-top: 4px; }
+  .rating p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+  .rating a { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--deep); }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  .h2 { font-size: clamp(32px, 4.4vw, 44px); font-weight: 800; color: var(--deep); }
+  .intro { color: var(--muted); margin-top: 10px; max-width: 60ch; }
+
+  /* Interventions */
+  .services { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+  .service { padding: 20px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 28px 1fr; gap: 14px; }
+  .service svg { width: 26px; height: 26px; stroke: var(--copper); fill: none; stroke-width: 1.8; margin-top: 3px; }
+  .service h3 { font-size: 24px; font-weight: 700; }
+  .service p { color: var(--muted); margin-top: 4px; }
+
+  /* Déroulement */
+  .steps-bg { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .steps { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; }
+  .step { counter-increment: s; }
+  .step::before { content: counter(s); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--copper-soft); color: var(--copper); font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 22px; margin-bottom: 14px; }
+  .step h3 { font-size: 24px; font-weight: 700; }
+  .step p { color: var(--muted); margin-top: 6px; }
+
+  /* Avis */
+  .themes { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .themes li { list-style: none; background: var(--white); border: 1px solid var(--line); padding: 8px 14px; border-radius: 99px; font-weight: 500; }
+  .themes { padding: 0; }
+  .reviews-link { display: inline-block; margin-top: 22px; font-weight: 600; color: var(--deep); }
+
+  /* Horaires et accès */
+  .infos { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  table { width: 100%; border-collapse: collapse; margin-top: 18px; background: var(--white); border-radius: 10px; overflow: hidden; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  td:last-child { text-align: right; font-weight: 600; }
+  tr.today td { background: var(--copper-soft); }
+  tr.today td:first-child::after { content: " (aujourd'hui)"; color: var(--copper); font-weight: 600; font-size: 14px; }
+  .closed { color: var(--closed); }
+  .map { margin-top: 18px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
+    .addr { padding: 14px 16px; }
+  .addr a { font-weight: 600; color: var(--deep); }
+
+  /* Rappel */
+  .callback { background: var(--deep); color: #fff; border-radius: 12px; padding: 32px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; }
+  .callback h2 { font-size: 36px; font-weight: 800; }
+  .callback p { color: #cfe0e2; margin-top: 10px; }
+  form { display: grid; gap: 12px; }
+  label { display: grid; gap: 4px; font-size: 14px; font-weight: 600; }
+  input, select, textarea { font: inherit; padding: 11px 12px; border-radius: 6px; border: 0; color: var(--ink); }
+  form button { font: inherit; font-weight: 600; background: var(--copper); color: #fff; border: 0; padding: 13px; border-radius: 6px; cursor: pointer; }
+  .form-note { font-size: 14px; color: #ffe3c4; min-height: 1.2em; }
+
+  footer { padding: 32px 0 100px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+
+  .side { display: grid; gap: 16px; }
+  .illu { width: 100%; height: auto; display: block; }
+  .plan { position: relative; display: block; }
+  .plan svg { width: 100%; height: auto; display: block; }
+  .plan span { position: absolute; right: 12px; bottom: 12px; background: var(--deep); color: #fff; font-weight: 600; font-size: 14px; padding: 7px 12px; border-radius: 6px; }
+  .plan:hover span { background: var(--copper); }
+  @media (max-width: 860px) { .illu { max-width: 340px; } }
+
+  /* Barre d'appel fixe sur téléphone */
+  .callbar { display: none; }
+
+  @media (max-width: 860px) {
+    .top nav { display: none; }
+    .brand span { display: none; }
+    .hero { padding: 40px 0 48px; }
+    .hero .wrap, .infos, .callback { grid-template-columns: 1fr; }
+    .services, .steps { grid-template-columns: 1fr; }
+    .steps { gap: 22px; }
+    section { padding: 48px 0; }
+    .callback { padding: 24px; }
+    .callbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: var(--white); border-top: 1px solid var(--line); }
+    .callbar a { flex: 1; text-align: center; text-decoration: none; background: var(--copper); color: #fff; font-weight: 700; padding: 13px; border-radius: 8px; font-size: 18px; }
+  }
+  @media (max-width: 420px) {
+    .call-sm { display: none; }
+    .hero-actions > * { flex: 1 1 100%; }
+    .ghost { padding: 14px 20px; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="demo">Maquette de démonstration réalisée par Rayann Ilkay pour S-ECO. Ce n'est pas le site officiel.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="brand"><b>S-ECO</b><span>Plomberie et serrurerie</span></a>
+    <nav aria-label="Menu">
+      <a href="#interventions">Interventions</a>
+      <a href="#deroulement">Comment ça marche</a>
+      <a href="#horaires">Horaires et accès</a>
+    </nav>
+    <a href="tel:+33609556693" class="call-sm">06 09 55 66 93</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="titre">
+    <div class="wrap">
+      <div>
+        <p class="status" id="statut"><i></i> <span>Horaires</span></p>
+        <h1 id="titre">Plombier et serrurier à Aubervilliers</h1>
+        <p class="lead">Fuite d'eau, WC bouché, chauffe-eau en panne ou porte claquée : on intervient vite, y compris le dimanche.</p>
+        <div class="hero-actions">
+          <a href="tel:+33609556693" class="call-lg"><small>Appel direct</small><strong>06 09 55 66 93</strong></a>
+          <a href="#rappel" class="ghost">Être rappelé</a>
+        </div>
+      </div>
+      <div class="side">
+      <svg class="illu" viewBox="0 0 360 230" role="img" aria-label="Illustration : canalisation en cuivre avec vanne, goutte d'eau et clé">
+        <defs>
+          <linearGradient id="cu" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d9924a"/><stop offset=".5" stop-color="#b8732e"/><stop offset="1" stop-color="#8f5620"/></linearGradient>
+          <linearGradient id="cuv" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#d9924a"/><stop offset=".5" stop-color="#b8732e"/><stop offset="1" stop-color="#8f5620"/></linearGradient>
+        </defs>
+        <!-- mur -->
+        <rect x="0" y="196" width="360" height="34" fill="#164c56"/>
+        <!-- tuyau horizontal -->
+        <rect x="0" y="58" width="236" height="22" rx="3" fill="url(#cu)"/>
+        <!-- coude -->
+        <path d="M236 58 h10 a40 40 0 0 1 40 40 v10 h-22 v-10 a18 18 0 0 0 -18 -18 h-10 z" fill="url(#cuv)"/>
+        <!-- tuyau vertical -->
+        <rect x="264" y="104" width="22" height="92" fill="url(#cuv)"/>
+        <!-- raccords -->
+        <rect x="70" y="52" width="16" height="34" rx="3" fill="#a1631f"/>
+        <rect x="258" y="150" width="34" height="14" rx="3" fill="#a1631f"/>
+        <!-- vanne -->
+        <rect x="140" y="46" width="34" height="46" rx="5" fill="#a1631f"/>
+        <rect x="153" y="22" width="8" height="26" fill="#6f4417"/>
+        <rect x="128" y="14" width="58" height="12" rx="6" fill="#e3e9ea"/>
+        <!-- goutte -->
+        <path d="M275 206 c0 0 -11 13 -11 21 a11 11 0 0 0 22 0 c0 -8 -11 -21 -11 -21z" fill="#7cc4d4" transform="translate(0,-10)"/>
+        <!-- clé de serrure -->
+        <g transform="translate(36,128) rotate(-18)" fill="#e3e9ea">
+          <circle cx="18" cy="18" r="17"/><circle cx="18" cy="18" r="7" fill="#0f3a42"/>
+          <rect x="33" y="14" width="64" height="9" rx="2"/><rect x="78" y="22" width="7" height="12"/><rect x="90" y="22" width="7" height="16"/>
+        </g>
+      </svg>
+      <aside class="rating" aria-label="Note des clients">
+        <p class="score">4,9<span>/5</span></p>
+        <p class="stars" aria-hidden="true">★★★★★</p>
+        <p>Note moyenne sur 218 avis Google</p>
+        <a href="https://maps.google.com/?cid=13945665614857030891" target="_blank" rel="noopener">Lire les avis sur Google</a>
+      </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="interventions" aria-labelledby="t-interventions">
+    <div class="wrap">
+      <h2 class="h2" id="t-interventions">Nos interventions</h2>
+      <p class="intro">Dépannage en urgence ou travaux prévus, chez les particuliers comme chez les professionnels.</p>
+      <div class="services">
+        <div class="service">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>
+          <div><h3>Fuites et dégâts des eaux</h3><p>Recherche de la fuite, réparation et remise en état des raccords.</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10v6a5 5 0 0 1-10 0z M14 7h4a2 2 0 0 1 2 2v1 M9 15v5 M6 20h6"/></svg>
+          <div><h3>WC et canalisations bouchés</h3><p>Débouchage des toilettes, éviers et évacuations, avec des conseils pour éviter que ça recommence.</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M12 9v4 M10 17h4"/></svg>
+          <div><h3>Chauffe-eau</h3><p>Diagnostic, réparation ou remplacement quand l'eau chaude ne revient pas.</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h9a4 4 0 0 1 4 4v1 M8 10V6h4v4 M17 18v2"/></svg>
+          <div><h3>Robinetterie et sanitaires</h3><p>Remplacement de robinets, mitigeurs, chasses d'eau et joints.</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="12" r="4"/><path d="M12 12h9 M18 12v3 M15 12v2"/></svg>
+          <div><h3>Ouverture de porte et serrures</h3><p>Porte claquée ou clé perdue : ouverture, changement de cylindre ou de serrure.</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l4 4-9 9H5v-4z M12 8l4 4"/></svg>
+          <div><h3>Petits travaux</h3><p>Installation et remplacement d'équipements de salle de bain et de cuisine.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deroulement" class="steps-bg" aria-labelledby="t-deroulement">
+    <div class="wrap">
+      <h2 class="h2" id="t-deroulement">Comment ça marche</h2>
+      <div class="steps">
+        <div class="step"><h3>Vous appelez</h3><p>Vous expliquez le problème au téléphone. On vous dit quand on peut passer, souvent le jour même.</p></div>
+        <div class="step"><h3>On vous annonce le prix</h3><p>Le tarif est donné avant de commencer. Pas de mauvaise surprise sur la facture.</p></div>
+        <div class="step"><h3>On répare proprement</h3><p>Le travail est fait proprement, et on vous explique ce qui s'est passé et comment l'éviter.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-avis">
+    <div class="wrap">
+      <h2 class="h2" id="t-avis">Ce que les clients retiennent</h2>
+      <p class="intro">Dans les avis Google, ce sont ces points qui reviennent le plus souvent :</p>
+      <ul class="themes">
+        <li>Intervention rapide, même le dimanche</li>
+        <li>Travail propre</li>
+        <li>Prix raisonnables</li>
+        <li>Explications claires</li>
+        <li>Conseils d'entretien</li>
+      </ul>
+      <a class="reviews-link" href="https://maps.google.com/?cid=13945665614857030891" target="_blank" rel="noopener">Voir les 218 avis sur Google</a>
+    </div>
+  </section>
+
+  <section id="horaires" aria-labelledby="t-horaires" style="padding-top:0">
+    <div class="wrap infos">
+      <div>
+        <h2 class="h2" id="t-horaires">Horaires</h2>
+        <table aria-label="Horaires d'ouverture">
+          <tbody id="horaires-table">
+            <tr data-day="1"><td>Lundi</td><td>7h - 2h</td></tr>
+            <tr data-day="2"><td>Mardi</td><td>7h - 2h</td></tr>
+            <tr data-day="3"><td>Mercredi</td><td>7h - 2h</td></tr>
+            <tr data-day="4"><td>Jeudi</td><td>7h - 2h</td></tr>
+            <tr data-day="5"><td>Vendredi</td><td>7h - 15h30</td></tr>
+            <tr data-day="6"><td>Samedi</td><td class="closed">Fermé</td></tr>
+            <tr data-day="0"><td>Dimanche</td><td>7h - 2h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2 class="h2">Où nous trouver</h2>
+        <div class="map">
+          <a class="plan" href="https://maps.google.com/?cid=13945665614857030891" target="_blank" rel="noopener" aria-label="Ouvrir le plan dans Google Maps">
+            <svg viewBox="0 0 400 220" aria-hidden="true">
+              <rect width="400" height="220" fill="#e9eeee"/>
+              <g fill="#dfe6e6"><rect x="20" y="20" width="110" height="70" rx="4"/><rect x="160" y="20" width="90" height="70" rx="4"/><rect x="280" y="20" width="100" height="70" rx="4"/><rect x="20" y="130" width="110" height="70" rx="4"/><rect x="160" y="130" width="90" height="70" rx="4"/><rect x="280" y="130" width="100" height="70" rx="4"/></g>
+              <rect x="0" y="98" width="400" height="24" fill="#ffffff"/>
+              <rect x="138" y="0" width="16" height="220" fill="#ffffff"/>
+              <rect x="258" y="0" width="16" height="220" fill="#ffffff"/>
+              <text x="12" y="114" font-family="Barlow, Arial" font-size="12" fill="#5d6b6f">Boulevard Félix Faure</text>
+              <path d="M206 54 c-14 0 -24 10 -24 23 c0 18 24 37 24 37 s24 -19 24 -37 c0 -13 -10 -23 -24 -23z" fill="#b8732e"/>
+              <circle cx="206" cy="77" r="9" fill="#fff"/>
+            </svg>
+            <span>Voir l'itinéraire</span>
+          </a>
+          <p class="addr">84 boulevard Félix Faure, 93300 Aubervilliers<br>
+          <a href="https://maps.google.com/?cid=13945665614857030891" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rappel" aria-labelledby="t-rappel" style="padding-top:0">
+    <div class="wrap">
+      <div class="callback">
+        <div>
+          <h2 id="t-rappel">Vous préférez être rappelé ?</h2>
+          <p>Laissez votre numéro et décrivez le problème en une phrase. On vous rappelle dès que possible.</p>
+        </div>
+        <form id="form-rappel">
+          <label>Votre prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+          <label>Votre téléphone<input type="tel" name="tel" autocomplete="tel" required></label>
+          <label>Type de problème
+            <select name="type">
+              <option>Fuite d'eau</option>
+              <option>WC ou canalisation bouchés</option>
+              <option>Chauffe-eau</option>
+              <option>Porte ou serrure</option>
+              <option>Autre</option>
+            </select>
+          </label>
+          <button type="submit">Demander à être rappelé</button>
+          <p class="form-note" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>S-ECO, plomberie et serrurerie, 84 bd Félix Faure, 93300 Aubervilliers</p>
+    <p><a href="#">Mentions légales</a></p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+33609556693">Appeler le 06 09 55 66 93</a></div>
+
+<script>
+// Ouvert ou fermé en ce moment, d'après les horaires (heure de Paris)
+(function () {
+  // [jour] = [ouverture, fermeture] en heures décimales ; une fermeture > 24 déborde sur la nuit
+  var h = { 0: [7, 26], 1: [7, 26], 2: [7, 26], 3: [7, 26], 4: [7, 26], 5: [7, 15.5], 6: null };
+  var now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+  var d = now.getDay(), t = now.getHours() + now.getMinutes() / 60;
+  var today = h[d], yesterday = h[(d + 6) % 7];
+  var open = (today && t >= today[0] && t < today[1]) || (yesterday && yesterday[1] > 24 && t < yesterday[1] - 24);
+
+  var s = document.getElementById('statut');
+  s.querySelector('span').textContent = open ? 'Ouvert en ce moment' : 'Fermé en ce moment, rappel dès la réouverture';
+  if (!open) s.classList.add('is-closed');
+
+  var row = document.querySelector('#horaires-table tr[data-day="' + d + '"]');
+  if (row) row.classList.add('today');
+})();
+
+// Formulaire de démonstration : n'envoie rien
+document.getElementById('form-rappel').addEventListener('submit', function (e) {
+  e.preventDefault();
+  this.querySelector('.form-note').textContent = "Maquette : sur le vrai site, cette demande arrivera directement par SMS ou par e-mail.";
+});
+</script>
+</body>
+</html>

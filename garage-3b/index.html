@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garage 3B - Garage familial aux Pavillons-sous-Bois</title>
+<meta name="description" content="Garage 3B, garage familial aux Pavillons-sous-Bois : entretien, réparation, pneus et voitures d'occasion livrées partout en France. 01 83 72 94 26.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0c0e11">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0c0e11;
+    --night-2: #14171c;
+    --night-3: #1c2027;
+    --steel: #8b939f;
+    --mist: #c7ccd4;
+    --white: #ffffff;
+    --beam: #ffd257;        /* lumière des phares */
+    --beam-soft: rgba(255,210,87,.14);
+    --eu: #2b55d4;          /* bleu plaque */
+    --line: rgba(255,255,255,.1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--night); color: var(--white); font-family: "Instrument Sans", "Segoe UI", Arial, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  h1, h2, h3 { font-family: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif; margin: 0; line-height: .92; font-weight: 900; text-transform: uppercase; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  :focus-visible { outline: 3px solid var(--beam); outline-offset: 3px; border-radius: 4px; }
+
+  .demo { position: relative; z-index: 40; background: #fff3c4; color: #5c4a00; font-size: 13px; text-align: center; padding: 6px 12px; }
+
+  /* ---------- Plaque (logo) ---------- */
+  .plate { display: inline-flex; height: 42px; border: 2px solid #111; border-radius: 6px; background: #fff; overflow: hidden; text-decoration: none; color: #111; box-shadow: inset 0 0 0 2px #fff; flex: none; }
+  .plate i { width: 24px; background: #1d3e9e; color: #fff; font: 700 12px/1 "Instrument Sans", sans-serif; font-style: normal; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 4px; }
+  .plate i:first-child::before { content: ""; width: 11px; height: 11px; margin: 5px 0 auto; border-radius: 50%; border: 2px dotted #ffd257; }
+  .plate b { padding: 0 11px; display: flex; align-items: center; font: 900 28px/1 "Big Shoulders Display", Impact, sans-serif; letter-spacing: 1.5px; }
+
+  /* ---------- Navigation ---------- */
+  .top { position: absolute; left: 0; right: 0; z-index: 30; }
+  .top .wrap { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .top nav { display: flex; gap: 28px; }
+  .top nav a { text-decoration: none; color: var(--mist); font-weight: 600; font-size: 15px; }
+  .top nav a:hover { color: var(--white); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font: 700 16px/1 "Instrument Sans", sans-serif; border-radius: 999px; padding: 15px 24px; border: 1.5px solid transparent; cursor: pointer; transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-beam { background: var(--beam); color: #2a2100; box-shadow: 0 10px 30px -8px rgba(255,210,87,.6); }
+  .btn-beam:hover { box-shadow: 0 14px 40px -8px rgba(255,210,87,.8); }
+  .btn-ghost { border-color: rgba(255,255,255,.35); color: var(--white); background: rgba(255,255,255,.04); backdrop-filter: blur(6px); }
+  .btn-ghost:hover { border-color: var(--white); }
+  .top .btn { padding: 11px 18px; font-size: 15px; }
+
+  /* ---------- Accueil : le garage de nuit ---------- */
+  .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(43,85,212,.18), transparent 70%),
+      radial-gradient(ellipse 80% 60% at 20% 100%, rgba(255,255,255,.05), transparent 60%),
+      linear-gradient(#0c0e11, #0f1216 70%, #0a0b0d); }
+  .hero::before { /* rideau métallique du garage, au fond */
+    content: ""; position: absolute; inset: 0 0 38% 0; opacity: .5;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 2px, transparent 2px 22px);
+    mask-image: linear-gradient(#000 0%, transparent 100%); -webkit-mask-image: linear-gradient(#000 0%, transparent 100%);
+  }
+  .hero-copy { position: relative; z-index: 2; padding-top: 120px; }
+  .france text { paint-order: stroke; stroke: #14171c; stroke-width: 5px; stroke-linejoin: round; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--mist); font-size: 15px; }
+  .eyebrow .led { width: 9px; height: 9px; border-radius: 50%; background: #4fd18b; box-shadow: 0 0 12px #4fd18b; }
+  .eyebrow.is-closed .led { background: #ff7a5c; box-shadow: 0 0 12px #ff7a5c; }
+  .hero h1 { font-size: clamp(58px, 8.6vw, 132px); margin-top: 14px; letter-spacing: -.5px; }
+  .hero h1 .l2 { display: block; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.75); }
+  .hero .lead { margin-top: 18px; max-width: 520px; color: var(--mist); font-size: 19px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+  .stage { position: relative; z-index: 1; width: 100%; max-width: 1240px; margin: 10px auto 0; }
+  .car-hero { width: 100%; height: auto; display: block; }
+  .car-hero .draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.4s cubic-bezier(.6,.1,.2,1) .3s forwards; }
+  .car-hero .fill { opacity: 0; animation: fade .9s ease 2.2s forwards; }
+  .car-hero .beam { opacity: 0; transform-origin: 812px 186px; animation: lights 1.2s steps(1) 2.6s forwards, beamOn 1s ease 3.3s forwards; }
+  .car-hero .lamp { fill: #3a3a3a; animation: lamp .1s steps(1) 2.7s forwards; }
+  .car-hero .wheel { transform-box: fill-box; transform-origin: center; animation: spin 1.4s linear 0s 2; }
+  .road { position: relative; height: 70px; background: linear-gradient(#0a0b0d, #050506); z-index: 0; }
+  .road::before { content: ""; position: absolute; left: 0; right: 0; top: 30px; height: 6px; background: repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 60px, transparent 60px 120px); background-size: 120px 6px; animation: roll 1s linear 0s 3; }
+  .stats { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: rgba(12,14,17,.85); backdrop-filter: blur(8px); }
+  .stats div { padding: 22px 20px; border-right: 1px solid var(--line); }
+  .stats div:last-child { border-right: 0; }
+  .stats b { display: block; font: 900 40px/1 "Big Shoulders Display", Impact, sans-serif; color: var(--white); }
+  .stats span { color: var(--steel); font-size: 14px; }
+
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes fade { to { opacity: 1; } }
+  @keyframes lights { 0% { opacity: .9; } 20% { opacity: 0; } 40% { opacity: 1; } 55% { opacity: .2; } 70% { opacity: 1; } }
+  @keyframes beamOn { to { opacity: 1; } }
+  @keyframes lamp { to { fill: #fff6d6; } }
+  @keyframes spin { to { transform: rotate(-360deg); } }
+  @keyframes roll { from { background-position: 0 0; } to { background-position: -120px 0; } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 110px 0; position: relative; }
+  .label { color: var(--beam); font-weight: 600; font-size: 15px; }
+  .h2 { font-size: clamp(48px, 7vw, 96px); margin-top: 10px; }
+  .intro { margin-top: 16px; color: var(--mist); max-width: 58ch; font-size: 18px; }
+
+  /* ---------- Voiture interactive ---------- */
+  .lab { display: grid; grid-template-columns: 1.35fr .65fr; gap: 40px; align-items: center; margin-top: 48px; }
+  .car-lab { width: 100%; height: auto; display: block; overflow: visible; }
+  .spot { cursor: pointer; }
+  .spot circle.ping { fill: none; stroke: var(--beam); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: ping 2s ease-out infinite; }
+  .spot circle.dot { fill: var(--beam); stroke: #2a2100; stroke-width: 3; transition: r .2s ease; }
+  .spot:hover circle.dot, .spot.is-active circle.dot { r: 15; }
+  .spot.is-active circle.ping { stroke: #fff; }
+  .spot text { font: 700 15px "Instrument Sans", sans-serif; fill: var(--mist); pointer-events: none; }
+  @keyframes ping { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
+  .panel { background: linear-gradient(160deg, var(--night-3), var(--night-2)); border: 1px solid var(--line); border-radius: 18px; padding: 28px; min-height: 280px; }
+  .panel .tag { display: inline-block; font-size: 13px; font-weight: 700; color: #2a2100; background: var(--beam); padding: 4px 10px; border-radius: 99px; }
+  .panel h3 { font-size: 44px; margin-top: 16px; }
+  .panel p { color: var(--mist); margin-top: 12px; }
+  .panel ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--mist); }
+  .panel li::before { content: "→ "; color: var(--beam); }
+  .panel .btn { margin-top: 22px; }
+  .chips { display: none; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+  .chips button { font: 600 14px "Instrument Sans", sans-serif; color: var(--mist); background: var(--night-3); border: 1px solid var(--line); border-radius: 99px; padding: 8px 14px; cursor: pointer; }
+  .chips button[aria-pressed="true"] { background: var(--beam); color: #2a2100; border-color: var(--beam); }
+
+  /* ---------- Occasions livrées ---------- */
+  .delivery { background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(43,85,212,.16), transparent 70%), var(--night-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .deliv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 50px; }
+  .france { width: 100%; height: auto; display: block; }
+  .france .trail { stroke-dasharray: 3 12; animation: march 1.2s linear infinite; }
+  @keyframes march { to { stroke-dashoffset: -30; } }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .steps li { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .steps li:last-child { border-bottom: 0; }
+  .steps .n { font: 900 52px/1 "Big Shoulders Display", Impact, sans-serif; color: transparent; -webkit-text-stroke: 1.5px var(--beam); }
+  .steps h3 { font: 700 20px/1.3 "Instrument Sans", sans-serif; text-transform: none; }
+  .steps p { color: var(--mist); margin-top: 4px; }
+
+  /* ---------- Avis ---------- */
+  .reviews { text-align: center; overflow: hidden; }
+  .big-note { font: 900 clamp(120px, 22vw, 280px)/.85 "Big Shoulders Display", Impact, sans-serif; letter-spacing: -2px; }
+  .big-note small { font-size: .3em; color: var(--steel); }
+  .stars { position: relative; display: inline-block; font-size: 34px; letter-spacing: 6px; color: #3a3f48; margin-top: 10px; }
+  .stars::after { content: "★★★★★"; position: absolute; left: 0; top: 0; width: 0; overflow: hidden; color: var(--beam); white-space: nowrap; transition: width 1.6s ease .2s; }
+  .reviews.is-in .stars::after { width: 96%; }
+  .reviews .src { color: var(--mist); margin-top: 8px; }
+  .marquee { margin-top: 56px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0; overflow: hidden; white-space: nowrap; }
+  .marquee .track { display: inline-flex; gap: 56px; animation: slide 26s linear infinite; }
+  .marquee span { font: 900 40px/1 "Big Shoulders Display", Impact, sans-serif; text-transform: uppercase; color: var(--mist); }
+  .marquee span::after { content: "✦"; color: var(--beam); margin-left: 56px; font-size: 26px; vertical-align: middle; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  .reviews .btn { margin-top: 40px; }
+
+  /* ---------- Infos ---------- */
+  .infos { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 40px; }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; font-weight: 700; }
+  .hours tr.today td { color: var(--beam); }
+  .hours .closed { color: var(--steel); }
+  .plan { display: block; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); text-decoration: none; }
+  .plan svg { width: 100%; height: auto; display: block; }
+  .plan span { position: absolute; right: 14px; bottom: 14px; background: var(--beam); color: #2a2100; font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 99px; }
+  .addr { margin-top: 14px; color: var(--mist); }
+
+  /* ---------- Contact ---------- */
+  .contact { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; background: linear-gradient(150deg, #1a1e25, #101216); border: 1px solid var(--line); border-radius: 24px; padding: 44px; }
+  .contact .intro { margin-top: 14px; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .tabs button { flex: 1; font: 700 15px "Instrument Sans", sans-serif; padding: 12px; border-radius: 99px; border: 1.5px solid rgba(255,255,255,.18); background: transparent; color: var(--mist); cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: var(--white); color: var(--night); border-color: var(--white); }
+  form { display: grid; gap: 12px; }
+  label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: var(--mist); }
+  input, textarea { font: inherit; color: var(--white); background: rgba(255,255,255,.05); border: 1.5px solid rgba(255,255,255,.14); border-radius: 12px; padding: 13px 14px; }
+  input:focus, textarea:focus { outline: none; border-color: var(--beam); }
+  textarea { min-height: 96px; resize: vertical; }
+  .note-form { font-size: 14px; color: var(--beam); min-height: 1.2em; }
+
+  footer { padding: 40px 0 110px; color: var(--steel); font-size: 14px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+  /* Apparition douce au défilement (une seule fois) */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  .callbar { display: none; }
+
+  @media (max-width: 920px) {
+    .top nav { display: none; }
+    .hero-copy { padding-top: 110px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stats div:nth-child(2) { border-right: 0; }
+    .stats div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .lab, .deliv-grid, .infos, .contact { grid-template-columns: 1fr; }
+    .chips { display: flex; }
+    .contact { padding: 26px; }
+    section { padding: 80px 0; }
+    .callbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(12,14,17,.92); backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+    .callbar a { flex: 1; }
+    .spot text { display: none; }
+  }
+  @media (max-width: 460px) {
+    .top .btn { display: none; }
+    .hero-actions .btn { flex: 1 1 100%; }
+    .stats b { font-size: 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo">Maquette de démonstration réalisée par Rayann Ilkay pour Garage 3B. Ce n'est pas le site officiel.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="plate" aria-label="Garage 3B, accueil"><i>F</i><b>GARAGE&nbsp;3B</b><i>93</i></a>
+    <nav aria-label="Menu">
+      <a href="#atelier">Atelier</a>
+      <a href="#occasions">Occasions</a>
+      <a href="#avis">Avis</a>
+      <a href="#infos">Horaires</a>
+    </nav>
+    <a href="tel:+33183729426" class="btn btn-beam">01 83 72 94 26</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ ACCUEIL ============ -->
+  <section class="hero" aria-labelledby="titre" style="padding:0">
+    <div class="wrap hero-copy">
+      <p class="eyebrow" id="statut"><span class="led" aria-hidden="true"></span><span>Les Pavillons-sous-Bois</span></p>
+      <h1 id="titre">Garage 3B<span class="l2">Familial</span></h1>
+      <p class="lead">Entretien, réparation et pneus à l'atelier. Et des voitures d'occasion garanties un an, livrées partout en France.</p>
+      <div class="hero-actions">
+        <a href="tel:+33183729426" class="btn btn-beam">Appeler le garage</a>
+        <a href="#atelier" class="btn btn-ghost">Que faut-il réparer ?</a>
+      </div>
+    </div>
+
+    <div class="stage" aria-hidden="true">
+      <svg class="car-hero" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <linearGradient id="beamG" x1="0" x2="1">
+            <stop offset="0" stop-color="#ffd257" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#ffd257" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="bodyG" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#2b3039"/><stop offset="1" stop-color="#15181d"/>
+          </linearGradient>
+          <linearGradient id="glassG" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#3d5aa8" stop-opacity=".55"/><stop offset="1" stop-color="#0c0e11" stop-opacity=".9"/>
+          </linearGradient>
+        </defs>
+        <!-- faisceau des phares -->
+        <polygon class="beam" points="812,178 1200,120 1200,290 812,198" fill="url(#beamG)"/>
+        <g transform="translate(60,0)">
+          <!-- ombre -->
+          <ellipse class="fill" cx="400" cy="268" rx="380" ry="14" fill="#000" opacity=".6"/>
+          <!-- carrosserie -->
+          <path class="fill" d="M50 245 L50 207 Q52 187 82 181 L205 169 Q255 123 335 111 L470 109 Q545 111 605 153 L705 173 Q748 181 752 211 L752 245 L662 245 A52 52 0 0 0 558 245 L242 245 A52 52 0 0 0 138 245 Z" fill="url(#bodyG)"/>
+          <path class="draw" pathLength="1" d="M50 245 L50 207 Q52 187 82 181 L205 169 Q255 123 335 111 L470 109 Q545 111 605 153 L705 173 Q748 181 752 211 L752 245 L662 245 A52 52 0 0 0 558 245 L242 245 A52 52 0 0 0 138 245 Z" fill="none" stroke="#e8ecf2" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- vitres -->
+          <path class="fill" d="M232 168 Q272 131 330 124 L392 122 L392 168 Z M408 122 L462 122 Q512 125 560 162 L408 166 Z" fill="url(#glassG)"/>
+          <path class="draw" pathLength="1" d="M232 168 Q272 131 330 124 L462 122 Q512 125 560 162 L232 168 M400 122 L400 168" fill="none" stroke="#e8ecf2" stroke-width="2"/>
+          <!-- ligne de caisse et poignées -->
+          <path class="draw" pathLength="1" d="M90 200 L740 205" stroke="#8b939f" stroke-width="1.5" fill="none"/>
+          <rect class="fill" x="330" y="182" width="34" height="5" rx="2.5" fill="#8b939f"/>
+          <rect class="fill" x="480" y="183" width="34" height="5" rx="2.5" fill="#8b939f"/>
+          <!-- feux -->
+          <path class="lamp" d="M732 186 L752 190 L752 204 L726 200 Z"/>
+          <rect class="fill" x="50" y="190" width="14" height="16" rx="3" fill="#c0392b"/>
+          <!-- roues -->
+          <g class="wheel"><circle cx="190" cy="245" r="44" fill="#0b0c0e" stroke="#e8ecf2" stroke-width="2.5"/><circle cx="190" cy="245" r="26" fill="#2b3039"/><path d="M190 219 V271 M164 245 H216 M172 227 L208 263 M208 227 L172 263" stroke="#8b939f" stroke-width="3"/><circle cx="190" cy="245" r="6" fill="#e8ecf2"/></g>
+          <g class="wheel"><circle cx="610" cy="245" r="44" fill="#0b0c0e" stroke="#e8ecf2" stroke-width="2.5"/><circle cx="610" cy="245" r="26" fill="#2b3039"/><path d="M610 219 V271 M584 245 H636 M592 227 L628 263 M628 227 L592 263" stroke="#8b939f" stroke-width="3"/><circle cx="610" cy="245" r="6" fill="#e8ecf2"/></g>
+          <!-- petite plaque arrière -->
+          <rect class="fill" x="56" y="214" width="36" height="12" rx="2" fill="#fff"/><rect class="fill" x="56" y="214" width="7" height="12" fill="#1d3e9e"/>
+        </g>
+      </svg>
+    </div>
+    <div class="road" aria-hidden="true"></div>
+    <div class="stats wrap" style="max-width:none;padding:0">
+      <div><b>4,8/5</b><span>Note Google</span></div>
+      <div><b>301</b><span>Avis clients</span></div>
+      <div><b>1 an</b><span>Garantie sur nos occasions</span></div>
+      <div><b>France</b><span>Livraison à domicile</span></div>
+    </div>
+  </section>
+
+  <!-- ============ VOITURE INTERACTIVE ============ -->
+  <section id="atelier" aria-labelledby="t-atelier">
+    <div class="wrap">
+      <p class="label">L'atelier</p>
+      <h2 class="h2" id="t-atelier">Où ça coince ?</h2>
+      <p class="intro">Touchez la partie de la voiture qui vous inquiète. On vous dit ce qu'on peut faire.</p>
+
+      <div class="lab">
+        <svg class="car-lab reveal" viewBox="0 0 820 320" role="group" aria-label="Voiture interactive : choisissez une partie">
+          <ellipse cx="410" cy="292" rx="390" ry="14" fill="#000" opacity=".5"/>
+          <path d="M50 265 L50 227 Q52 207 82 201 L205 189 Q255 143 335 131 L470 129 Q545 131 605 173 L705 193 Q748 201 752 231 L752 265 L662 265 A52 52 0 0 0 558 265 L242 265 A52 52 0 0 0 138 265 Z" fill="#1c2027" stroke="#c7ccd4" stroke-width="2"/>
+          <path d="M232 188 Q272 151 330 144 L392 142 L392 188 Z M408 142 L462 142 Q512 145 560 182 L408 186 Z" fill="#26324a" stroke="#c7ccd4" stroke-width="1.5"/>
+          <circle cx="190" cy="265" r="44" fill="#0b0c0e" stroke="#c7ccd4" stroke-width="2"/><circle cx="190" cy="265" r="24" fill="#2b3039"/>
+          <circle cx="610" cy="265" r="44" fill="#0b0c0e" stroke="#c7ccd4" stroke-width="2"/><circle cx="610" cy="265" r="24" fill="#2b3039"/>
+          <circle cx="610" cy="265" r="17" fill="none" stroke="#5e646d" stroke-width="5"/>
+
+          <g class="spot is-active" tabindex="0" role="button" data-k="moteur" aria-label="Moteur"><circle class="ping" cx="668" cy="186" r="12"/><circle class="dot" cx="668" cy="186" r="11"/><text x="640" y="152">Moteur</text></g>
+          <g class="spot" tabindex="0" role="button" data-k="diag" aria-label="Tableau de bord"><circle class="ping" cx="480" cy="160" r="12"/><circle class="dot" cx="480" cy="160" r="11"/><text x="440" y="122">Voyant allumé</text></g>
+          <g class="spot" tabindex="0" role="button" data-k="freins" aria-label="Freins"><circle class="ping" cx="610" cy="265" r="12"/><circle class="dot" cx="610" cy="265" r="11"/><text x="590" y="332">Freins</text></g>
+          <g class="spot" tabindex="0" role="button" data-k="pneus" aria-label="Pneus"><circle class="ping" cx="190" cy="265" r="12"/><circle class="dot" cx="190" cy="265" r="11"/><text x="168" y="332">Pneus</text></g>
+          <g class="spot" tabindex="0" role="button" data-k="occasion" aria-label="Acheter une voiture"><circle class="ping" cx="300" cy="215" r="12"/><circle class="dot" cx="300" cy="215" r="11"/><text x="236" y="248" style="display:none">Occasion</text></g>
+        </svg>
+
+        <div>
+          <div class="panel reveal" aria-live="polite">
+            <span class="tag" id="p-tag">Entretien</span>
+            <h3 id="p-title">Moteur et vidange</h3>
+            <p id="p-text">Révision, vidange, filtres et niveaux pour que votre moteur tienne la route.</p>
+            <ul id="p-list"><li>Vidange et filtres</li><li>Révision complète</li><li>Contrôle des niveaux</li></ul>
+            <a href="#contact" class="btn btn-beam" id="p-cta">Prendre RDV pour ça</a>
+          </div>
+          <div class="chips" role="group" aria-label="Choisir une partie">
+            <button type="button" data-k="moteur" aria-pressed="true">Moteur</button>
+            <button type="button" data-k="diag" aria-pressed="false">Voyant</button>
+            <button type="button" data-k="freins" aria-pressed="false">Freins</button>
+            <button type="button" data-k="pneus" aria-pressed="false">Pneus</button>
+            <button type="button" data-k="occasion" aria-pressed="false">Occasion</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OCCASIONS ============ -->
+  <section id="occasions" class="delivery" aria-labelledby="t-occ">
+    <div class="wrap">
+      <p class="label">Voitures d'occasion</p>
+      <h2 class="h2" id="t-occ">Elle roule jusqu'à chez vous</h2>
+      <p class="intro">Pas besoin de venir aux Pavillons-sous-Bois. Nos clients achètent à distance, partout en France.</p>
+      <div class="deliv-grid">
+        <svg class="france reveal" viewBox="0 0 400 380" role="img" aria-label="Carte de France : une voiture part du garage en Seine-Saint-Denis et arrive dans le Gard">
+          <path d="M178 22 L214 30 L232 54 L262 60 L300 74 L332 92 L322 122 L330 150 L314 176 L326 206 L318 232 L340 262 L326 290 L290 300 L262 318 L230 312 L206 334 L170 344 L140 330 L112 336 L96 310 L106 274 L96 238 L72 214 L52 188 L18 176 L28 152 L70 150 L96 132 L120 104 L132 72 L156 58 Z" fill="rgba(255,255,255,.04)" stroke="#c7ccd4" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M362 300 l10 -14 l8 18 l-4 28 l-12 8 l-6 -18 z" fill="rgba(255,255,255,.04)" stroke="#c7ccd4" stroke-width="1.8" stroke-linejoin="round"/>
+          <path id="route" class="trail" d="M214 98 C 250 150, 236 220, 270 286" fill="none" stroke="#ffd257" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="214" cy="98" r="8" fill="#2b55d4" stroke="#fff" stroke-width="2"/>
+          <circle cx="270" cy="286" r="8" fill="#ffd257" stroke="#fff" stroke-width="2"/>
+          <g>
+            <rect x="-13" y="-7" width="26" height="14" rx="5" fill="#fff"/>
+            <rect x="5" y="-5" width="6" height="10" rx="2" fill="#ffd257"/>
+            <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear"><mpath href="#route"/></animateMotion>
+          </g>
+          <text x="228" y="92" font-family="Instrument Sans, Arial" font-size="14" font-weight="700" fill="#fff">Garage 3B</text>
+          <text x="176" y="318" font-family="Instrument Sans, Arial" font-size="14" font-weight="700" fill="#ffd257">Gard, 700 km</text>
+        </svg>
+        <ol class="steps">
+          <li class="reveal"><span class="n">01</span><div><h3>Vous la voyez comme si vous y étiez</h3><p>Photos détaillées et appel vidéo pour suivre les travaux en direct.</p></div></li>
+          <li class="reveal"><span class="n">02</span><div><h3>Préparée à l'atelier, garantie un an</h3><p>La voiture passe par nos mains avant la vente.</p></div></li>
+          <li class="reveal"><span class="n">03</span><div><h3>La carte grise, c'est nous</h3><p>On s'occupe de la demande d'immatriculation.</p></div></li>
+          <li class="reveal"><span class="n">04</span><div><h3>Livrée devant chez vous</h3><p>Partout en France, à un prix raisonnable.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AVIS ============ -->
+  <section id="avis" class="reviews" aria-labelledby="t-avis">
+    <div class="wrap">
+      <p class="label">Avis Google</p>
+      <h2 id="t-avis" class="big-note">4,8<small>/5</small></h2>
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p class="src">sur 301 avis clients</p>
+    </div>
+    <div class="marquee" aria-label="Ce que les clients disent le plus souvent">
+      <div class="track">
+        <span>Garage familial</span><span>Accueil chaleureux</span><span>Honnêtes</span><span>Transparents</span><span>Très réactifs</span><span>Suivi après la vente</span>
+        <span aria-hidden="true">Garage familial</span><span aria-hidden="true">Accueil chaleureux</span><span aria-hidden="true">Honnêtes</span><span aria-hidden="true">Transparents</span><span aria-hidden="true">Très réactifs</span><span aria-hidden="true">Suivi après la vente</span>
+      </div>
+    </div>
+    <div class="wrap">
+      <a class="btn btn-ghost" href="https://maps.google.com/?cid=16330082179139284268" target="_blank" rel="noopener">Lire les avis sur Google</a>
+    </div>
+  </section>
+
+  <!-- ============ HORAIRES ============ -->
+  <section id="infos" aria-labelledby="t-infos" style="padding-top:20px">
+    <div class="wrap">
+      <p class="label">Infos pratiques</p>
+      <h2 class="h2" id="t-infos">Passez nous voir</h2>
+      <div class="infos">
+        <table class="hours" aria-label="Horaires d'ouverture">
+          <tbody id="horaires">
+            <tr data-day="2"><td>Mardi</td><td>9h - 20h</td></tr>
+            <tr data-day="3"><td>Mercredi</td><td>9h - 20h</td></tr>
+            <tr data-day="4"><td>Jeudi</td><td>9h - 20h</td></tr>
+            <tr data-day="5"><td>Vendredi</td><td>9h - 20h</td></tr>
+            <tr data-day="6"><td>Samedi</td><td>9h - 20h</td></tr>
+            <tr data-day="0"><td>Dimanche</td><td class="closed">Fermé</td></tr>
+            <tr data-day="1"><td>Lundi</td><td class="closed">Fermé</td></tr>
+          </tbody>
+        </table>
+        <div>
+          <a class="plan" href="https://maps.google.com/?cid=16330082179139284268" target="_blank" rel="noopener" aria-label="Ouvrir l'itinéraire dans Google Maps">
+            <svg viewBox="0 0 400 220" aria-hidden="true">
+              <rect width="400" height="220" fill="#14171c"/>
+              <g fill="#1c2027"><rect x="16" y="14" width="120" height="76" rx="6"/><rect x="166" y="14" width="96" height="76" rx="6"/><rect x="292" y="14" width="92" height="76" rx="6"/><rect x="16" y="130" width="120" height="76" rx="6"/><rect x="166" y="130" width="96" height="76" rx="6"/><rect x="292" y="130" width="92" height="76" rx="6"/></g>
+              <rect x="0" y="98" width="400" height="24" fill="#2b3039"/>
+              <path d="M0 110 H400" stroke="#ffd257" stroke-width="2" stroke-dasharray="14 10" opacity=".7"/>
+              <rect x="142" y="0" width="16" height="220" fill="#2b3039"/><rect x="268" y="0" width="16" height="220" fill="#2b3039"/>
+              <text x="12" y="94" font-family="Instrument Sans, Arial" font-size="12" font-weight="600" fill="#8b939f">Allée Berthie Albrecht</text>
+              <circle cx="214" cy="62" r="26" fill="#ffd257" opacity=".15"/>
+              <rect x="190" y="49" width="48" height="26" rx="4" fill="#fff" stroke="#111" stroke-width="2"/><rect x="190" y="49" width="10" height="26" fill="#1d3e9e"/>
+              <text x="204" y="68" font-family="Big Shoulders Display, Impact, Arial" font-size="17" font-weight="900" fill="#111">3B</text>
+            </svg>
+            <span>Itinéraire</span>
+          </a>
+          <p class="addr">19 allée Berthie Albrecht, 93320 Les Pavillons-sous-Bois</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" aria-labelledby="t-contact" style="padding-top:20px">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <p class="label">Contact</p>
+          <h2 class="h2" id="t-contact">On vous rappelle</h2>
+          <p class="intro">Un rendez-vous à l'atelier ou une voiture à trouver : laissez votre numéro, on vous rappelle pendant les heures d'ouverture.</p>
+          <div class="hero-actions"><a href="tel:+33183729426" class="btn btn-ghost">Ou appelez le 01 83 72 94 26</a></div>
+        </div>
+        <div>
+          <div class="tabs" role="group" aria-label="Type de demande">
+            <button type="button" aria-pressed="true" data-type="atelier">Atelier</button>
+            <button type="button" aria-pressed="false" data-type="occasion">Occasion</button>
+          </div>
+          <form id="form">
+            <label>Votre prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+            <label>Votre téléphone<input type="tel" name="tel" autocomplete="tel" required></label>
+            <label id="champ"><span id="champ-txt">Votre voiture et le problème</span><textarea name="details" placeholder="Ex. : Clio 4, bruit au freinage"></textarea></label>
+            <button type="submit" class="btn btn-beam">Être rappelé</button>
+            <p class="note-form" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="plate" style="height:34px"><i style="width:20px">F</i><b style="font-size:22px">GARAGE&nbsp;3B</b><i style="width:20px">93</i></span>
+    <p>19 allée Berthie Albrecht, 93320 Les Pavillons-sous-Bois &middot; <a href="#">Mentions légales</a></p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:+33183729426" class="btn btn-beam">Appeler le 01 83 72 94 26</a></div>
+
+<script>
+// ---------- Ouvert / fermé (heure de Paris) ----------
+(function () {
+  var h = { 0: null, 1: null, 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [9, 20] };
+  var now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+  var d = now.getDay(), t = now.getHours() + now.getMinutes() / 60, td = h[d];
+  var open = td && t >= td[0] && t < td[1];
+  var s = document.getElementById('statut');
+  s.lastElementChild.textContent = 'Les Pavillons-sous-Bois, ' + (open ? 'ouvert en ce moment' : 'fermé en ce moment');
+  if (!open) s.classList.add('is-closed');
+  var row = document.querySelector('#horaires tr[data-day="' + d + '"]');
+  if (row) row.classList.add('today');
+})();
+
+// ---------- Voiture interactive ----------
+var infos = {
+  moteur:   { tag: 'Entretien', title: 'Moteur et vidange', text: 'Révision, vidange, filtres et niveaux pour que votre moteur tienne la route.', list: ['Vidange et filtres', 'Révision complète', 'Contrôle des niveaux'], form: 'atelier', ph: 'Ex. : Golf 7, révision des 60 000 km' },
+  diag:     { tag: 'Diagnostic', title: 'Un voyant allumé ?', text: "On branche la valise, on trouve la vraie cause, et on vous explique avant de toucher à quoi que ce soit.", list: ['Lecture des codes défaut', 'Recherche de panne', 'Explication claire'], form: 'atelier', ph: 'Ex. : voyant moteur orange depuis hier' },
+  freins:   { tag: 'Sécurité', title: 'Freins', text: 'Un bruit, une pédale molle ou des vibrations : on contrôle et on remplace ce qu\'il faut.', list: ['Plaquettes et disques', 'Liquide de frein', 'Contrôle complet'], form: 'atelier', ph: 'Ex. : ça grince quand je freine' },
+  pneus:    { tag: 'Pneus', title: 'Pneus', text: 'Vente, montage et équilibrage, été comme hiver.', list: ['Vente de pneus', 'Montage et équilibrage', 'Conseil selon votre usage'], form: 'atelier', ph: 'Ex. : 4 pneus 205/55 R16' },
+  occasion: { tag: 'Occasion', title: 'Vous cherchez une voiture ?', text: 'Dites-nous ce que vous cherchez : on vous montre en photos et en vidéo, garantie un an, livrée chez vous.', list: ['Garantie un an', 'Carte grise faite pour vous', 'Livraison partout en France'], form: 'occasion', ph: 'Ex. : citadine essence, moins de 80 000 km, 9 000 €' }
+};
+var current = 'moteur';
+function show(k) {
+  current = k;
+  var i = infos[k];
+  document.getElementById('p-tag').textContent = i.tag;
+  document.getElementById('p-title').textContent = i.title;
+  document.getElementById('p-text').textContent = i.text;
+  document.getElementById('p-list').innerHTML = i.list.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+  document.querySelectorAll('.spot').forEach(function (s) { s.classList.toggle('is-active', s.dataset.k === k); });
+  document.querySelectorAll('.chips button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.k === k)); });
+}
+document.querySelectorAll('.spot, .chips button').forEach(function (el) {
+  el.addEventListener('click', function () { show(el.dataset.k); });
+  el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(el.dataset.k); } });
+});
+
+// ---------- Formulaire (démonstration) ----------
+function setForm(type, ph) {
+  document.querySelectorAll('.tabs button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.type === type)); });
+  document.getElementById('champ-txt').textContent = type === 'occasion' ? 'La voiture que vous cherchez' : 'Votre voiture et le problème';
+  document.querySelector('#champ textarea').placeholder = ph || (type === 'occasion' ? 'Ex. : citadine essence, moins de 80 000 km, 9 000 €' : 'Ex. : Clio 4, bruit au freinage');
+}
+document.querySelectorAll('.tabs button').forEach(function (b) { b.addEventListener('click', function () { setForm(b.dataset.type); }); });
+document.getElementById('p-cta').addEventListener('click', function () { var i = infos[current]; setForm(i.form, i.ph); });
+document.getElementById('form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  this.querySelector('.note-form').textContent = 'Maquette : sur le vrai site, la demande arrivera directement au garage par SMS ou par e-mail.';
+});
+
+// ---------- Apparitions au défilement ----------
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+}, { threshold: .2 });
+document.querySelectorAll('.reveal, .reviews').forEach(function (el) { io.observe(el); });
+</script>
+</body>
+</html>
