@@ -8,185 +8,177 @@
 <meta name="description" content="Pneus de grandes marques à petit prix à Montfermeil (93). Montage et équilibrage offerts. Ouvert 7j/7, jours fériés compris.">
 <style>
   @font-face { font-family: "Archivo"; src: url("archivo.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
-  :root {
-    --bg: #0e0e10; --bg-2: #18181b; --bg-3: #232327;
-    --white: #fff; --grey: #9c9ca3; --soft: #cacad0;
-    --red: #e4202a; --red-2: #ff3a43;
-    --line: rgba(255,255,255,.11);
-  }
+  :root { --paper: #f3efe6; --paper-2: #e9e3d6; --ink: #121212; --mute: #6b665d; --red: #e3141f; --red-d: #b70e17; }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; overflow-x: clip; }
-  body { margin: 0; background: var(--bg); color: var(--white); font-family: "Archivo", Arial, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: clip; }
-  h1, h2, h3 { margin: 0; font-weight: 900; font-stretch: 125%; line-height: .92; text-transform: uppercase; letter-spacing: -.01em; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Archivo", Arial, sans-serif; font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip;
+    background-image: radial-gradient(rgba(0,0,0,.035) 1px, transparent 1px); background-size: 4px 4px; }
+  h1, h2, h3 { margin: 0; font-weight: 900; font-stretch: 68%; line-height: .92; text-transform: uppercase; letter-spacing: -.005em; }
   p { margin: 0; }
   a { color: inherit; }
   img { display: block; max-width: 100%; }
-  .wrap { max-width: 1220px; margin: 0 auto; padding: 0 20px; }
-  :focus-visible { outline: 3px solid var(--red-2); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px; }
   .demo { background: #fff3c4; color: #5c4a00; font-size: 13px; text-align: center; padding: 6px 12px; }
 
-  /* Logo repris de leur enseigne */
-  .brand { display: inline-flex; flex-direction: column; text-decoration: none; line-height: 1; transform: rotate(-2deg); box-shadow: 0 0 0 2px #fff; border-radius: 4px; overflow: hidden; }
-  .brand span { display: block; font-weight: 900; font-stretch: 118%; text-transform: uppercase; padding: 5px 10px 4px; font-size: 17px; letter-spacing: .02em; }
-  .brand .a { background: #111; color: #fff; }
-  .brand .b { background: var(--red); color: #fff; }
+  /* ---------- En-tête : le sapin désodorisant ---------- */
+  .top { position: relative; z-index: 20; }
+  .top .wrap { height: 76px; display: flex; align-items: center; justify-content: flex-end; gap: 22px; }
+  .top nav { display: flex; gap: 24px; margin-right: auto; padding-left: 150px; }
+  .top nav a { text-decoration: none; font-weight: 700; font-size: 15px; }
+  .top nav a:hover { color: var(--red); }
+  .call { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 800; padding: 12px 18px; border-radius: 8px; }
+  .call:hover { background: var(--red); }
+  .tree { position: absolute; left: 22px; top: 0; width: 112px; transform-origin: 56px 0; animation: swing 4.5s ease-in-out infinite; text-decoration: none; filter: drop-shadow(0 12px 14px rgba(0,0,0,.25)); }
+  .tree:hover { animation-duration: 1.2s; }
+  .tree svg { display: block; width: 100%; height: auto; }
+  @keyframes swing { 0%, 100% { transform: rotate(5deg); } 50% { transform: rotate(-5deg); } }
 
-  .top .wrap { height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .top nav { display: flex; gap: 28px; }
-  .top nav a { text-decoration: none; color: var(--soft); font-weight: 500; font-size: 15px; }
-  .top nav a:hover { color: #fff; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font: 700 16px/1 "Archivo", sans-serif; border-radius: 12px; padding: 17px 24px; border: 2px solid transparent; cursor: pointer; background: transparent; color: #fff; transition: transform .2s ease, background-color .2s ease, color .2s ease; }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-r { background: var(--red); box-shadow: 0 14px 34px -14px rgba(228,32,42,.9); }
-  .btn-r:hover { background: var(--red-2); }
-  .btn-w { border-color: rgba(255,255,255,.35); }
-  .btn-w:hover { background: #fff; color: #111; }
+  /* ---------- Accueil ---------- */
+  .hero { padding: 20px 0 30px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 280px; gap: 30px; align-items: start; }
+  .hero h1 { font-size: clamp(56px, 9.4vw, 142px); padding-top: 40px; line-height: .92; }
+  .hero h1 .r { color: var(--red); }
+  .hero .lead { margin-top: 24px; font-size: 20px; max-width: 34ch; font-weight: 500; }
+  .hero .lead b { background: linear-gradient(transparent 60%, rgba(227,20,31,.25) 60%); }
+  .row-cta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 26px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 800 17px/1 "Archivo", sans-serif; text-decoration: none; padding: 18px 24px; border-radius: 8px; border: 2.5px solid var(--ink); cursor: pointer; background: transparent; color: var(--ink); transition: transform .15s ease, box-shadow .15s ease; box-shadow: 4px 4px 0 var(--ink); }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn-red { background: var(--red); color: #fff; }
   .btn-wa { background: #25d366; color: #0b2b17; }
-  .btn-wa:hover { background: #3ae07a; }
   .btn-wa svg { width: 22px; height: 22px; }
-  .top .btn { padding: 12px 16px; font-size: 15px; }
+  .stars { font-weight: 800; text-decoration: none; }
+  .stars span { color: var(--red); letter-spacing: 2px; }
+  .stars small { display: block; font-weight: 500; color: var(--mute); font-size: 14px; }
 
-  /* Accueil + tapis roulant */
-  .hero { position: relative; padding: 46px 0 0; overflow: hidden; background: radial-gradient(ellipse 60% 50% at 75% 30%, rgba(228,32,42,.20), transparent 70%); }
-  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: end; }
-  .live { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--line); background: rgba(255,255,255,.05); padding: 9px 15px; border-radius: 99px; font-size: 15px; font-weight: 600; }
-  .live i { width: 9px; height: 9px; border-radius: 50%; background: #2ee07c; box-shadow: 0 0 12px #2ee07c; animation: blink 1.6s ease-in-out infinite; }
-  .live.closed i { background: var(--red); box-shadow: 0 0 12px var(--red); }
-  .live b { color: var(--red-2); font-variant-numeric: tabular-nums; }
-  @keyframes blink { 50% { opacity: .35; } }
-  .hero h1 { font-size: clamp(46px, 7vw, 104px); margin-top: 22px; }
-  .hero h1 em { font-style: normal; display: inline-block; background: var(--red); padding: 0 .12em; transform: rotate(-1.5deg); margin-top: .06em; }
-  .hero .lead { color: var(--soft); font-size: 19px; max-width: 46ch; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
-  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
-  .badges span { font-size: 14px; font-weight: 700; padding: 8px 12px; border-radius: 8px; background: var(--bg-3); border: 1px solid var(--line); }
-  .badges span b { color: var(--red-2); }
-  .rate { display: inline-flex; align-items: center; gap: 12px; margin-top: 22px; text-decoration: none; }
-  .rate b { font-size: 38px; font-weight: 900; font-stretch: 120%; }
-  .rate span { font-size: 14px; color: var(--grey); line-height: 1.3; }
-  .rate em { display: block; font-style: normal; color: var(--red-2); letter-spacing: 2px; }
+  /* Pancarte de porte OUVERT / FERMÉ */
+  .sign { justify-self: center; position: relative; padding-top: 70px; width: 250px; perspective: 900px; }
+  .sign::before, .sign::after { content: ""; position: absolute; top: 6px; width: 2px; height: 84px; background: #8a8478; }
+  .sign::before { left: 64px; transform: rotate(22deg); transform-origin: top; }
+  .sign::after { right: 64px; transform: rotate(-22deg); transform-origin: top; }
+  .sign .nail { position: absolute; top: 0; left: 50%; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: #555; box-shadow: inset -2px -2px 0 #333; }
+  .plate { position: relative; height: 150px; transform-style: preserve-3d; transition: transform 1s cubic-bezier(.4,1.6,.5,1); }
+  .plate.closed { transform: rotateY(180deg); }
+  .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; border: 4px solid var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 6px 6px 0 rgba(0,0,0,.18); }
+  .face b { font-weight: 900; font-stretch: 70%; font-size: 64px; line-height: .9; text-transform: uppercase; }
+  .face small { font-weight: 700; font-size: 14px; margin-top: 8px; }
+  .face.open { background: #fff; color: var(--ink); }
+  .face.open b { color: #0f8a3c; }
+  .face.shut { background: var(--red); color: #fff; transform: rotateY(180deg); }
 
-  .belt { position: relative; margin-top: 54px; height: 170px; }
-  .belt svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .belt .tyres { position: absolute; left: 0; right: 0; bottom: 46px; height: 120px; }
-  .belt .t { position: absolute; bottom: 0; left: -140px; width: 120px; height: 120px; animation: ride 12s linear infinite; }
-  .belt .t svg { animation: roll 12s linear infinite; position: static; }
-  .belt .t:nth-child(2) { animation-delay: -3s; } .belt .t:nth-child(2) svg { animation-delay: -3s; }
-  .belt .t:nth-child(3) { animation-delay: -6s; width: 104px; height: 104px; } .belt .t:nth-child(3) svg { animation-delay: -6s; }
-  .belt .t:nth-child(4) { animation-delay: -9s; width: 132px; height: 132px; } .belt .t:nth-child(4) svg { animation-delay: -9s; }
-  @keyframes ride { to { transform: translateX(calc(100vw + 280px)); } }
-  @keyframes roll { to { transform: rotate(1440deg); } }
-  .rollers { animation: rollers 1s linear infinite; }
-  @keyframes rollers { to { stroke-dashoffset: -40; } }
+  /* Tampons */
+  .stamps { display: flex; flex-wrap: wrap; gap: 14px 22px; padding: 26px 0 10px; }
+  .stamp { border: 3px solid var(--red); color: var(--red); font-weight: 900; font-stretch: 75%; font-size: 22px; text-transform: uppercase; padding: 8px 14px; border-radius: 6px; transform: rotate(-3deg); mix-blend-mode: multiply; opacity: .92; }
+  .stamp:nth-child(2) { transform: rotate(2deg); border-color: var(--ink); color: var(--ink); }
+  .stamp:nth-child(3) { transform: rotate(-1deg); }
 
-  /* Sections */
-  section { padding: 96px 0; }
-  .kick { display: inline-flex; align-items: center; gap: 10px; color: var(--red-2); font-weight: 800; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; }
-  .kick::before { content: ""; width: 22px; height: 3px; background: var(--red-2); }
-  .h2 { font-size: clamp(34px, 4.6vw, 62px); margin-top: 14px; }
-  .intro { margin-top: 16px; color: var(--soft); max-width: 58ch; font-size: 18px; }
+  /* ---------- Le tableau + le ticket ---------- */
+  section { padding: 80px 0; }
+  .h2 { font-size: clamp(52px, 8vw, 112px); }
+  .h2 .r { color: var(--red); }
+  .sub { margin-top: 14px; font-size: 19px; color: var(--mute); max-width: 52ch; }
+  .shop { margin-top: 40px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; }
+  .board { background: #141414; color: #fff; border-radius: 18px; padding: 26px 26px 20px; box-shadow: 10px 10px 0 var(--red); border: 4px solid var(--ink); }
+  .board .bh { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 12px 12px; font-weight: 900; font-stretch: 72%; font-size: 26px; text-transform: uppercase; border-bottom: 2px dashed #444; }
+  .board .bh span:not(:first-child) { text-align: right; }
+  .board .rows { list-style: none; margin: 8px 0 0; padding: 0; }
+  .board .rows li { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; align-items: center; }
+  .board .rows .inch { font-weight: 900; font-stretch: 75%; font-size: 30px; padding: 6px 12px; }
+  .board .rows .inch small { font-size: 14px; color: #8d8d8d; font-weight: 700; margin-left: 6px; letter-spacing: .04em; }
+  .board .pick { font: 900 28px/1 "Archivo", sans-serif; font-stretch: 75%; color: #fff; background: transparent; border: 2px solid transparent; border-radius: 10px; padding: 9px 12px; text-align: right; cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
+  .board .pick:hover { border-color: #fff; }
+  .board .pick[aria-pressed="true"] { background: var(--red); border-color: var(--red); }
+  .board .pick i { font-style: normal; font-size: 16px; color: #8d8d8d; margin-left: 2px; }
+  .board .pick[aria-pressed="true"] i { color: #fff; }
+  .board .foot { margin-top: 14px; padding: 12px 12px 0; border-top: 2px dashed #444; font-size: 14px; color: #bdbdbd; }
+  .board .foot b { color: #fff; }
+  .brands { margin-top: 18px; font-weight: 800; font-stretch: 80%; text-transform: uppercase; letter-spacing: .06em; color: var(--mute); font-size: 15px; }
 
-  /* La machine à prix */
-  .price-s { background: var(--bg-2); border-top: 1px solid var(--line); }
-  .machine { margin-top: 46px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: stretch; }
-  .stage { position: relative; border-radius: 26px; border: 1px solid var(--line); background: radial-gradient(circle at 50% 45%, rgba(228,32,42,.16), transparent 62%), #121215; display: grid; place-items: center; min-height: 440px; overflow: hidden; }
-  .stage svg { width: 86%; max-width: 380px; height: auto; overflow: visible; }
-  #big { transform-box: view-box; transform-origin: 200px 200px; transition: transform .6s cubic-bezier(.3,1.4,.5,1); }
-  #bigspin { transform-box: view-box; transform-origin: 200px 200px; transition: transform .8s cubic-bezier(.3,.8,.3,1); }
-  .stage .inch { position: absolute; top: 18px; left: 20px; font-weight: 900; font-stretch: 120%; font-size: 15px; color: var(--grey); letter-spacing: .08em; text-transform: uppercase; }
-  .stage .pair { position: absolute; right: 18px; top: 16px; display: flex; gap: 6px; }
-  .stage .pair i { width: 12px; height: 22px; border-radius: 4px; background: #2a2a2f; transition: background-color .3s ease; }
-  .stage .pair i.on { background: var(--red); }
+  /* Imprimante + ticket */
+  .printer { position: sticky; top: 20px; }
+  .slot { position: relative; z-index: 3; height: 62px; background: linear-gradient(#2a2a2a, #111); border-radius: 14px 14px 8px 8px; border: 4px solid var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 18px; color: #bbb; font-weight: 800; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .slot i { width: 10px; height: 10px; border-radius: 50%; background: #2ee07c; box-shadow: 0 0 10px #2ee07c; }
+  .slot i.busy { animation: led .25s steps(1) infinite; background: #ffb020; box-shadow: 0 0 10px #ffb020; }
+  @keyframes led { 50% { opacity: .2; } }
+  .slot::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: -4px; height: 8px; background: #000; border-radius: 4px; }
+  .paper-clip { overflow: hidden; margin: -4px 30px 0; }
+  .ticket { background: #fff; color: #1a1a1a; font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace; font-size: 14px; line-height: 1.55; padding: 22px 20px 30px; transform: translateY(-100%); transition: transform 1.4s steps(18, end);
+    -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 10px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 90deg, #0000 91deg) bottom / 16px 10px repeat-x;
+    mask: linear-gradient(#000 0 0) top / 100% calc(100% - 10px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 90deg, #0000 91deg) bottom / 16px 10px repeat-x; }
+  .ticket.out { transform: none; }
+  .ticket .c { text-align: center; }
+  .ticket .logo { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 70%; font-size: 30px; line-height: .95; text-transform: uppercase; }
+  .ticket .logo span { color: var(--red); }
+  .ticket hr { border: 0; border-top: 1.5px dashed #999; margin: 12px 0; }
+  .ticket .l { display: flex; justify-content: space-between; gap: 10px; }
+  .ticket .free { color: #0f8a3c; }
+  .ticket .tot { font-size: 22px; font-weight: 800; }
+  .ticket .bar { display: block; height: 46px; margin: 14px auto 6px; width: 86%; }
+  .ticket .thanks { font-weight: 700; letter-spacing: .1em; }
+  .who { margin-top: 22px; display: grid; gap: 10px; }
+  .who .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .who input { width: 100%; font: 600 16px "Archivo", sans-serif; color: var(--ink); background: #fff; border: 2.5px solid var(--ink); border-radius: 8px; padding: 14px; }
+  .who input:focus { outline: none; box-shadow: 4px 4px 0 var(--red); }
+  .who .btn { width: 100%; }
+  .alt { text-align: center; font-size: 14px; color: var(--mute); }
+  .alt button { background: none; border: 0; padding: 0; font: inherit; color: var(--ink); text-decoration: underline; cursor: pointer; font-weight: 700; }
+  .note { min-height: 1.2em; font-weight: 700; font-size: 14px; color: var(--red-d); text-align: center; }
 
-  .panel { border-radius: 26px; border: 1px solid var(--line); background: #121215; padding: 30px; display: flex; flex-direction: column; }
-  .lab { font-size: 13px; font-weight: 800; color: var(--grey); letter-spacing: .1em; text-transform: uppercase; }
-  .ruler { margin-top: 12px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
-  .ruler button { position: relative; font: 900 20px/1 "Archivo", sans-serif; font-stretch: 115%; color: var(--soft); background: var(--bg-3); border: 1.5px solid var(--line); border-radius: 12px; padding: 16px 0 14px; cursor: pointer; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
-  .ruler button small { display: block; font-size: 11px; font-weight: 700; color: var(--grey); margin-top: 4px; }
-  .ruler button:hover { transform: translateY(-2px); }
-  .ruler button[aria-pressed="true"] { background: #fff; color: #111; border-color: #fff; }
-  .ruler button[aria-pressed="true"] small { color: #555; }
-  .qty { margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .qty button { font: 800 17px "Archivo", sans-serif; padding: 15px 8px; border-radius: 12px; border: 1.5px solid var(--line); background: transparent; color: var(--soft); cursor: pointer; }
-  .qty button[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
-  .gap { height: 22px; }
-  .odo { display: flex; align-items: flex-end; gap: 6px; margin-top: 10px; }
-  .odo .digits { display: flex; gap: 4px; }
-  .odo .d { width: .72em; height: 1.1em; overflow: hidden; background: #0a0a0b; border-radius: 10px; border: 1px solid #2a2a2f; font: 900 clamp(64px, 7vw, 96px)/1.1 "Archivo", sans-serif; font-stretch: 112%; text-align: center; box-shadow: inset 0 10px 18px rgba(0,0,0,.6), inset 0 -10px 18px rgba(0,0,0,.6); }
-  .odo .d span { display: block; transition: transform .9s cubic-bezier(.25,.8,.25,1); }
-  .odo .d span b { display: block; height: 1.1em; font-weight: 900; }
-  .odo .eur { font: 900 clamp(40px, 4vw, 56px)/1 "Archivo", sans-serif; color: var(--red-2); padding-bottom: 12px; }
-  .offer { margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: #fff; }
-  .offer::before { content: "★"; color: var(--red-2); }
-  .fine { margin-top: 8px; font-size: 13px; color: var(--grey); }
-  .panel .btn { margin-top: auto; }
-  .panel .btn:first-of-type { margin-top: 24px; }
-  .help { margin-top: 12px; font-size: 14px; color: var(--grey); text-align: center; }
-  .help b { color: #fff; }
-  .brands { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
-  .brands span { padding: 10px 16px; border-radius: 10px; border: 1px solid var(--line); font-weight: 800; font-stretch: 110%; letter-spacing: .04em; text-transform: uppercase; font-size: 14px; color: var(--soft); }
+  /* ---------- Polaroïds ---------- */
+  .wall { background: var(--paper-2); border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); }
+  .pins { margin-top: 44px; display: flex; flex-wrap: wrap; justify-content: center; gap: 34px 46px; }
+  .pol { position: relative; width: 250px; margin: 0; background: #fff; padding: 12px 12px 46px; box-shadow: 0 14px 26px rgba(0,0,0,.18); transform: rotate(var(--r, -3deg)); transition: transform .3s ease; }
+  .pol:hover { transform: rotate(0) scale(1.04); z-index: 2; }
+  .pol img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: contrast(1.08) saturate(.9); }
+  .pol figcaption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-weight: 900; font-stretch: 72%; font-size: 22px; text-transform: uppercase; }
+  .pol::before { content: ""; position: absolute; top: -14px; left: 50%; width: 96px; height: 28px; margin-left: -48px; background: rgba(227,20,31,.75); transform: rotate(-4deg); }
+  .pol:nth-child(2) { --r: 2.5deg; } .pol:nth-child(2)::before { background: rgba(18,18,18,.7); transform: rotate(3deg); }
+  .pol:nth-child(3) { --r: -1.5deg; }
 
-  /* Photos en pellicule */
-  .reel { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .reel figure { margin: 0; position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 3 / 4; border: 1px solid var(--line); }
-  .reel img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05) saturate(1.05); }
-  .reel figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(14,14,16,.82); padding: 7px 12px; border-radius: 99px; font-size: 14px; font-weight: 700; }
+  /* ---------- Venir ---------- */
+  .come { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; }
+  .addr { font-weight: 900; font-stretch: 68%; font-size: clamp(54px, 8vw, 110px); line-height: .86; text-transform: uppercase; }
+  .addr small { display: block; font-size: .36em; color: var(--mute); margin-top: 12px; line-height: 1; }
+  .hours { border: 3px solid var(--ink); border-radius: 14px; background: #fff; overflow: hidden; }
+  .hours div { display: flex; justify-content: space-between; gap: 10px; padding: 16px 18px; font-weight: 800; border-bottom: 2px dashed #cfc8b9; }
+  .hours div:last-child { border-bottom: 0; background: var(--red); color: #fff; }
+  .hours div.today { background: #fff6d6; }
+  .hours div span { font-weight: 500; }
 
-  /* Infos + contact */
-  .end { margin-top: 46px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  .card { background: var(--bg-2); border: 1px solid var(--line); border-radius: 24px; padding: 30px; }
-  .card h3 { font-size: 24px; }
-  .card > p { color: var(--soft); margin-top: 10px; }
-  .hours { list-style: none; padding: 0; margin: 18px 0 0; }
-  .hours li { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--soft); }
-  .hours li b { color: #fff; font-weight: 600; }
-  .hours li.today { color: #fff; font-weight: 800; }
-  .hours li.today b::before { content: "Aujourd'hui"; font-size: 12px; font-weight: 800; background: var(--red); color: #fff; padding: 3px 9px; border-radius: 99px; margin-right: 10px; }
-  .ferie { margin-top: 14px; display: inline-block; font-weight: 800; background: rgba(228,32,42,.12); border: 1px solid rgba(228,32,42,.45); color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 14px; }
-  .plan { display: block; position: relative; margin-top: 20px; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); text-decoration: none; }
-  .plan svg { width: 100%; height: auto; display: block; }
-  .plan span { position: absolute; right: 12px; bottom: 12px; background: var(--red); color: #fff; font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 99px; }
-  form { display: grid; gap: 12px; margin-top: 18px; }
-  label.f { display: grid; gap: 6px; font-size: 14px; font-weight: 700; color: #d4d4d9; }
-  .f input, .f select { font: inherit; color: #fff; background: var(--bg-3); border: 1.5px solid var(--line); border-radius: 12px; padding: 14px; }
-  .f input:focus, .f select:focus { outline: none; border-color: var(--red); }
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .preview { background: #0b141a; border: 1px solid rgba(37,211,102,.35); border-radius: 16px; padding: 14px 16px; font-size: 14px; line-height: 1.5; color: #e9edef; white-space: pre-line; }
-  .preview::before { content: "Aperçu du message reçu par l'atelier"; display: block; font-size: 12px; font-weight: 800; color: #25d366; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .05em; }
-  .note { min-height: 1.2em; color: #ffd27a; font-weight: 700; font-size: 14px; }
-
-  footer { border-top: 1px solid var(--line); padding: 36px 0 110px; color: var(--grey); font-size: 14px; }
-  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  footer { border-top: 3px solid var(--ink); padding: 30px 0 110px; font-size: 14px; color: var(--mute); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
 
   .callbar { display: none; }
-  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
-  .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 960px) {
     .top nav { display: none; }
-    .hero { padding-top: 22px; }
-    .hero .wrap, .machine, .end { grid-template-columns: 1fr; gap: 22px; }
-    .belt { height: 130px; margin-top: 36px; }
-    .belt .t { transform-origin: bottom; }
-    .stage { min-height: 360px; padding-top: 40px; }
-    .ruler { grid-template-columns: repeat(4, 1fr); }
-    .reel { grid-template-columns: repeat(3, 72%); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-    .reel figure { scroll-snap-align: start; }
-    section { padding: 76px 0; }
-    .callbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(14,14,16,.92); backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
-    .callbar a { flex: 1; }
+    .tree { width: 86px; left: 12px; }
+    .hero .wrap, .shop, .come { grid-template-columns: 1fr; }
+    .hero h1 { padding-top: 70px; }
+    .sign { width: 220px; justify-self: start; padding-top: 50px; }
+    .sign::before, .sign::after { height: 64px; }
+    .plate { height: 128px; }
+    .face b { font-size: 54px; }
+    .printer { position: static; }
+    .board { padding: 18px 12px 16px; box-shadow: 6px 6px 0 var(--red); }
+    .board .bh { font-size: 20px; padding: 0 8px 10px; }
+    .board .rows .inch { font-size: 24px; padding: 6px 8px; }
+    .board .rows .inch small { display: none; }
+    .board .pick { font-size: 23px; padding: 8px; }
+    section { padding: 64px 0; }
+    .pol { width: 200px; }
+    .callbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: var(--paper); border-top: 3px solid var(--ink); }
+    .callbar a { flex: 1; box-shadow: none; }
   }
   @media (max-width: 460px) {
-    .top .btn { display: none; }
-    .actions .btn { flex: 1 1 100%; }
-    .two { grid-template-columns: 1fr; }
-    .card, .panel { padding: 22px; }
+    .call { display: none; }
+    .who .two { grid-template-columns: 1fr; }
+    .pol { width: 78%; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
-    .reveal { opacity: 1; transform: none; }
-    .belt .t { left: auto; position: static; display: inline-block; }
   }
 </style>
 </head>
@@ -195,196 +187,126 @@
 <div class="demo">Maquette de démonstration réalisée par Rayann Ilkay pour L'Usine du Pneu. Ce n'est pas le site officiel.</div>
 
 <header class="top">
+  <a href="#" class="tree" aria-label="L'Usine du Pneu, accueil">
+    <svg viewBox="0 0 120 170" aria-hidden="true">
+      <path d="M60 0 V22" stroke="#8a8478" stroke-width="2"/>
+      <path d="M60 20 L104 44 L92 48 L114 76 L98 80 L118 116 L66 116 L66 136 L54 136 L54 116 L2 116 L22 80 L6 76 L28 48 L16 44 Z" fill="#fff" stroke="#e3141f" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="20" y="56" width="80" height="22" fill="#121212"/>
+      <text x="60" y="72" text-anchor="middle" font-family="Archivo, Arial" font-weight="900" font-size="15" fill="#fff" style="font-stretch:75%">L'USINE</text>
+      <rect x="20" y="80" width="80" height="22" fill="#e3141f"/>
+      <text x="60" y="96" text-anchor="middle" font-family="Archivo, Arial" font-weight="900" font-size="15" fill="#fff" style="font-stretch:75%">DU PNEU</text>
+      <circle cx="60" cy="26" r="3" fill="#8a8478"/>
+    </svg>
+  </a>
   <div class="wrap">
-    <a href="#" class="brand" aria-label="L'Usine du Pneu, accueil"><span class="a">L'Usine</span><span class="b">du Pneu</span></a>
-    <nav aria-label="Menu">
-      <a href="#prix">Les prix</a>
-      <a href="#atelier">L'atelier</a>
-      <a href="#contact">Horaires et contact</a>
-    </nav>
-    <a href="tel:+33749479294" class="btn btn-r">07 49 47 92 94</a>
+    <nav aria-label="Menu"><a href="#prix">Les prix</a><a href="#atelier">L'atelier</a><a href="#venir">Venir</a></nav>
+    <a class="call" href="tel:+33749479294">07 49 47 92 94</a>
   </div>
 </header>
 
 <main>
-  <section class="hero" style="padding-bottom:0" aria-labelledby="titre">
+  <section class="hero" aria-labelledby="titre">
     <div class="wrap">
       <div>
-        <p class="live" id="live"><i aria-hidden="true"></i><span id="live-txt">Montfermeil (93)</span></p>
-        <h1 id="titre">Grandes marques.<br><em>Petit prix.</em></h1>
-      </div>
-      <div>
-        <p class="lead">Pneus de grandes marques, montage et équilibrage offerts. Les prix sont affichés, sans surprise.</p>
-        <div class="actions">
-          <a href="#prix" class="btn btn-r">Voir mon prix</a>
-          <a href="tel:+33749479294" class="btn btn-w">Appeler</a>
+        <h1 id="titre">Pneus de<br>grandes marques<br><span class="r">à petit prix.</span></h1>
+        <p class="lead">Montage et <b>équilibrage offerts</b>. Les prix sont affichés : vous savez combien vous payez avant de venir.</p>
+        <div class="row-cta">
+          <a href="#prix" class="btn btn-red">Voir les prix</a>
+          <a class="stars" href="https://maps.google.com/?cid=5475323817345502302" target="_blank" rel="noopener"><span aria-hidden="true">★★★★★</span> 4,6 sur Google<small>1 339 avis clients</small></a>
         </div>
-        <div class="badges"><span><b>7j/7</b> même le dimanche</span><span>Ouvert les <b>jours fériés</b></span></div>
-        <a class="rate" href="https://maps.google.com/?cid=5475323817345502302" target="_blank" rel="noopener"><b>4,6</b><span><em aria-hidden="true">★★★★★</em>1 339 avis Google</span></a>
+      </div>
+      <div class="sign" aria-live="polite">
+        <span class="nail" aria-hidden="true"></span>
+        <div class="plate" id="plate">
+          <div class="face open"><b>Ouvert</b><small id="open-txt">jusqu'à 19h</small></div>
+          <div class="face shut"><b>Fermé</b><small id="shut-txt">on rouvre à 9h</small></div>
+        </div>
       </div>
     </div>
-
-    <!-- Le tapis roulant de l'usine -->
-    <div class="belt" aria-hidden="true">
-      <div class="tyres">
-        <div class="t"><svg viewBox="0 0 120 120"><use href="#tyre"/></svg></div>
-        <div class="t"><svg viewBox="0 0 120 120"><use href="#tyre"/></svg></div>
-        <div class="t"><svg viewBox="0 0 120 120"><use href="#tyre"/></svg></div>
-        <div class="t"><svg viewBox="0 0 120 120"><use href="#tyre"/></svg></div>
+    <div class="wrap">
+      <div class="stamps" aria-label="Les infos importantes">
+        <span class="stamp">Ouvert 7j/7</span>
+        <span class="stamp">Même les jours fériés</span>
+        <span class="stamp">Montage offert</span>
       </div>
-      <svg viewBox="0 0 1200 170" preserveAspectRatio="none">
-        <defs>
-          <g id="tyre">
-            <circle cx="60" cy="60" r="58" fill="#0b0b0c"/>
-            <circle cx="60" cy="60" r="54" fill="none" stroke="#1f1f23" stroke-width="7" stroke-dasharray="6 5"/>
-            <circle cx="60" cy="60" r="32" fill="#3a3a40" stroke="#56565e" stroke-width="2"/>
-            <g stroke="#1b1b1e" stroke-width="5" stroke-linecap="round"><path d="M60 32v56M32 60h56M40 40l40 40M80 40l-40 40"/></g>
-            <circle cx="60" cy="60" r="9" fill="#e4202a"/>
-          </g>
-        </defs>
-        <rect x="0" y="124" width="1200" height="22" fill="#232327"/>
-        <path class="rollers" d="M0 135 H1200" stroke="#3b3b41" stroke-width="10" stroke-dasharray="14 26"/>
-        <g>
-          <rect x="0" y="146" width="1200" height="24" fill="#111"/>
-          <path d="M0 158 H1200" stroke="#e4202a" stroke-width="6" stroke-dasharray="30 30"/>
-        </g>
-      </svg>
     </div>
   </section>
 
-  <!-- ============ LA MACHINE À PRIX ============ -->
-  <section class="price-s" id="prix" aria-labelledby="t-prix">
+  <!-- ============ LE TABLEAU DES PRIX + LE TICKET ============ -->
+  <section id="prix" aria-labelledby="t-prix" style="padding-top:40px">
     <div class="wrap">
-      <p class="kick">Les prix</p>
-      <h2 class="h2" id="t-prix">Votre prix,<br>en un clic.</h2>
-      <p class="intro">Choisissez la taille de votre jante et le nombre de pneus. Le prix s'affiche tout de suite, comme sur l'affiche de l'atelier.</p>
+      <h2 class="h2" id="t-prix">Les prix,<br><span class="r">comme à l'atelier.</span></h2>
+      <p class="sub">C'est le même tableau que sur l'affiche de l'atelier. Touchez votre taille de jante, on vous imprime le ticket.</p>
 
-      <div class="machine">
-        <div class="stage" aria-hidden="true">
-          <span class="inch" id="inch-l">Jante 16 pouces</span>
-          <span class="pair"><i class="on"></i><i class="on"></i><i></i><i></i></span>
-          <svg viewBox="0 0 400 400">
-            <defs>
-              <radialGradient id="rub"><stop offset=".62" stop-color="#1b1b1e"/><stop offset=".95" stop-color="#0b0b0c"/><stop offset="1" stop-color="#050506"/></radialGradient>
-              <radialGradient id="alu" cx="45%" cy="40%"><stop offset="0" stop-color="#d9d9de"/><stop offset=".55" stop-color="#8e8e96"/><stop offset="1" stop-color="#4a4a52"/></radialGradient>
-              <path id="flank" d="M 62 200 A 138 138 0 0 1 338 200"/>
-            </defs>
-            <g id="big">
-              <ellipse cx="200" cy="392" rx="150" ry="10" fill="#000" opacity=".6"/>
-              <g id="bigspin">
-                <circle cx="200" cy="200" r="190" fill="url(#rub)"/>
-                <circle cx="200" cy="200" r="184" fill="none" stroke="#0a0a0b" stroke-width="12" stroke-dasharray="9 7"/>
-                <text font-family="Archivo, Arial" font-weight="900" font-size="17" fill="#3a3a40" letter-spacing="2" text-anchor="middle"><textPath href="#flank" startOffset="50%">L'USINE DU PNEU · MONTFERMEIL</textPath></text>
-                <circle id="rim" cx="200" cy="200" r="112" fill="url(#alu)" stroke="#2a2a2f" stroke-width="4"/>
-                <circle id="rim2" cx="200" cy="200" r="96" fill="#26262b"/>
-                <g id="spokes" fill="url(#alu)">
-                  <path d="M192 188 L184 110 Q200 104 216 110 L208 188 Z"/>
-                  <path d="M192 188 L184 110 Q200 104 216 110 L208 188 Z" transform="rotate(72 200 200)"/>
-                  <path d="M192 188 L184 110 Q200 104 216 110 L208 188 Z" transform="rotate(144 200 200)"/>
-                  <path d="M192 188 L184 110 Q200 104 216 110 L208 188 Z" transform="rotate(216 200 200)"/>
-                  <path d="M192 188 L184 110 Q200 104 216 110 L208 188 Z" transform="rotate(288 200 200)"/>
-                </g>
-                <circle cx="200" cy="200" r="26" fill="#1b1b1e" stroke="#e4202a" stroke-width="4"/>
-              </g>
-            </g>
-          </svg>
+      <div class="shop">
+        <div>
+          <div class="board">
+            <div class="bh"><span>Jante</span><span>2 pneus</span><span>4 pneus</span></div>
+            <ul class="rows" id="rows"></ul>
+            <p class="foot"><b>Montage + équilibrage offerts</b> pour l'achat de 2 pneus. Le prix exact dépend du modèle et du stock.</p>
+          </div>
+          <p class="brands">Continental · Michelin · Goodyear · Bridgestone</p>
         </div>
 
-        <div class="panel">
-          <p class="lab">Taille de la jante (le R sur le flanc)</p>
-          <div class="ruler" id="ruler" role="group" aria-label="Taille de jante en pouces"></div>
-          <div class="gap"></div>
-          <p class="lab">Nombre de pneus</p>
-          <div class="qty" id="qty" role="group" aria-label="Nombre de pneus">
-            <button type="button" data-n="2" aria-pressed="true">2 pneus</button>
-            <button type="button" data-n="4" aria-pressed="false">4 pneus</button>
+        <div class="printer">
+          <div class="slot"><span>Votre ticket</span><i id="led" aria-hidden="true"></i></div>
+          <div class="paper-clip">
+            <div class="ticket" id="ticket" aria-live="polite">
+              <div class="c logo">L'Usine<br><span>du Pneu</span></div>
+              <div class="c">106 av. Vaucanson, Montfermeil</div>
+              <div class="c" id="t-date"></div>
+              <hr>
+              <div class="l"><span id="t-line">2 pneus R16</span><span id="t-p">80,00</span></div>
+              <div class="l free"><span>Montage</span><span>OFFERT</span></div>
+              <div class="l free"><span>Équilibrage</span><span>OFFERT</span></div>
+              <hr>
+              <div class="l tot"><span>TOTAL</span><span id="t-tot">80,00 €</span></div>
+              <svg class="bar" id="bar" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <div class="c thanks">MERCI, À BIENTÔT !</div>
+            </div>
           </div>
-          <div class="gap"></div>
-          <p class="lab">Votre forfait</p>
-          <div class="odo" aria-live="polite"><span class="sr" id="price-sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></span><div class="digits" id="digits" aria-hidden="true"></div><span class="eur" aria-hidden="true">€</span></div>
-          <p class="offer">Montage et équilibrage offerts</p>
-          <p class="fine">Tarifs de l'affiche en atelier. Le prix exact dépend du modèle de pneu et du stock.</p>
-          <a href="#contact" class="btn btn-r" id="take">Réserver ce forfait</a>
-          <p class="help">Pas sûr de votre taille ? Regardez le flanc : dans <b>205/55 R16</b>, c'est le <b>16</b>.</p>
+
+          <form class="who" id="form" autocomplete="on">
+            <div class="two">
+              <input name="prenom" placeholder="Prénom" autocomplete="given-name" aria-label="Prénom">
+              <input name="nom" placeholder="Nom" autocomplete="family-name" aria-label="Nom">
+            </div>
+            <input type="tel" name="tel" placeholder="Téléphone" autocomplete="tel" aria-label="Téléphone">
+            <button type="submit" class="btn btn-wa" data-via="wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Envoyer mon ticket sur WhatsApp</button>
+            <p class="alt">Pas WhatsApp ? <button type="submit" data-via="sms">Envoyer par SMS</button></p>
+            <p class="note" role="status"></p>
+          </form>
         </div>
       </div>
-      <div class="brands" aria-label="Marques"><span>Continental</span><span>Michelin</span><span>Goodyear</span><span>Bridgestone</span></div>
     </div>
   </section>
 
   <!-- ============ L'ATELIER ============ -->
-  <section id="atelier" aria-labelledby="t-atelier">
+  <section class="wall" id="atelier" aria-labelledby="t-atelier">
     <div class="wrap">
-      <p class="kick">L'atelier</p>
-      <h2 class="h2" id="t-atelier">Une vraie usine<br>à pneus.</h2>
-      <div class="reel">
-        <figure class="reveal"><img src="img/rayon1.jpg" alt="Les rayons de pneus de l'atelier" width="228" height="381" loading="lazy"><figcaption>Le stock</figcaption></figure>
-        <figure class="reveal"><img src="img/porsche.jpg" alt="Une voiture en cours de montage" width="221" height="368" loading="lazy"><figcaption>Au montage</figcaption></figure>
-        <figure class="reveal"><img src="img/allee.jpg" alt="L'allée des pneus neufs" width="221" height="368" loading="lazy"><figcaption>Des pneus neufs</figcaption></figure>
+      <h2 class="h2" id="t-atelier">Une vraie<br><span class="r">usine à pneus.</span></h2>
+      <div class="pins">
+        <figure class="pol"><img src="img/rayon1.jpg" alt="Les rayons de pneus de l'atelier" width="228" height="381" loading="lazy"><figcaption>Le stock</figcaption></figure>
+        <figure class="pol"><img src="img/porsche.jpg" alt="Une voiture en cours de montage" width="221" height="368" loading="lazy"><figcaption>Au montage</figcaption></figure>
+        <figure class="pol"><img src="img/allee.jpg" alt="L'allée des pneus neufs" width="221" height="368" loading="lazy"><figcaption>Du neuf</figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- ============ INFOS + CONTACT ============ -->
-  <section id="contact" class="price-s" aria-labelledby="t-contact">
-    <div class="wrap">
-      <p class="kick">Passer ou réserver</p>
-      <h2 class="h2" id="t-contact">106 avenue<br>Vaucanson.</h2>
-      <div class="end">
-        <div class="card reveal">
-          <h3>Horaires</h3>
-          <ul class="hours" id="hours">
-            <li data-d="1">Lundi <b>9h - 19h</b></li>
-            <li data-d="2">Mardi <b>9h - 19h</b></li>
-            <li data-d="3">Mercredi <b>9h - 19h</b></li>
-            <li data-d="4">Jeudi <b>9h - 19h</b></li>
-            <li data-d="5">Vendredi <b>9h - 19h</b></li>
-            <li data-d="6">Samedi <b>9h - 19h</b></li>
-            <li data-d="0">Dimanche <b>10h - 18h</b></li>
-          </ul>
-          <p class="ferie">Ouvert aussi les jours fériés</p>
-          <a class="plan" href="https://maps.google.com/?cid=5475323817345502302" target="_blank" rel="noopener" aria-label="Ouvrir l'itinéraire dans Google Maps">
-            <svg viewBox="0 0 400 190" aria-hidden="true">
-              <rect width="400" height="190" fill="#18181b"/>
-              <g fill="#232327"><rect x="14" y="14" width="170" height="62" rx="8"/><rect x="208" y="14" width="178" height="62" rx="8"/><rect x="14" y="116" width="170" height="60" rx="8"/><rect x="208" y="116" width="178" height="60" rx="8"/></g>
-              <rect x="0" y="84" width="400" height="24" fill="#2c2c31"/>
-              <path d="M0 96 H400" stroke="#e4202a" stroke-width="2" stroke-dasharray="14 10" opacity=".8"/>
-              <rect x="190" y="0" width="12" height="190" fill="#2c2c31"/>
-              <text x="16" y="80" font-family="Archivo, Arial" font-size="11" font-weight="700" fill="#9c9ca3">Avenue Vaucanson</text>
-              <circle cx="296" cy="45" r="27" fill="#e4202a" opacity=".2"/>
-              <rect x="268" y="30" width="56" height="15" fill="#111"/><rect x="268" y="45" width="56" height="15" fill="#e4202a"/>
-              <text x="296" y="41" text-anchor="middle" font-family="Archivo, Arial" font-size="9" font-weight="900" fill="#fff">L'USINE</text>
-              <text x="296" y="56" text-anchor="middle" font-family="Archivo, Arial" font-size="9" font-weight="900" fill="#fff">DU PNEU</text>
-            </svg>
-            <span>Itinéraire</span>
-          </a>
-          <p style="margin-top:14px;color:var(--soft)">106 avenue Vaucanson, 93370 Montfermeil</p>
+  <!-- ============ VENIR ============ -->
+  <section id="venir" aria-label="Adresse et horaires">
+    <div class="wrap come">
+      <div>
+        <p class="addr">106 avenue<br>Vaucanson<small>93370 Montfermeil</small></p>
+        <div class="row-cta">
+          <a class="btn btn-red" href="https://maps.google.com/?cid=5475323817345502302" target="_blank" rel="noopener">Y aller avec Google Maps</a>
+          <a class="btn" href="tel:+33749479294">Appeler</a>
         </div>
-
-        <div class="card reveal">
-          <h3>Réserver mes pneus</h3>
-          <p>Remplissez, envoyez : la demande arrive directement sur le téléphone de l'atelier.</p>
-          <form id="form">
-            <div class="two">
-              <label class="f">Jante
-                <select id="f-inch" name="jante"></select>
-              </label>
-              <label class="f">Nombre
-                <select id="f-qty" name="qte"><option value="2">2 pneus</option><option value="4">4 pneus</option></select>
-              </label>
-            </div>
-            <label class="f">Taille complète (si vous la connaissez)<input name="taille" placeholder="Ex. : 205/55 R16" spellcheck="false"></label>
-            <div class="two">
-              <label class="f">Nom<input name="nom" autocomplete="family-name" required></label>
-              <label class="f">Prénom<input name="prenom" autocomplete="given-name" required></label>
-            </div>
-            <label class="f">Téléphone<input type="tel" name="tel" autocomplete="tel" placeholder="06 12 34 56 78" required></label>
-            <div class="preview" id="preview" aria-live="polite"></div>
-            <button type="submit" class="btn btn-wa" data-via="wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Envoyer sur WhatsApp</button>
-            <button type="submit" class="btn btn-w" data-via="sms">ou par SMS</button>
-            <p class="note" role="status"></p>
-          </form>
-        </div>
+      </div>
+      <div class="hours" id="hours">
+        <div data-d="1,2,3,4,5,6">Lundi → samedi <span>9h - 19h</span></div>
+        <div data-d="0">Dimanche <span>10h - 18h</span></div>
+        <div>Jours fériés <span>Ouvert</span></div>
       </div>
     </div>
   </section>
@@ -392,114 +314,102 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand" style="transform:none"><span class="a" style="font-size:13px">L'Usine</span><span class="b" style="font-size:13px">du Pneu</span></span>
-    <p>106 avenue Vaucanson, 93370 Montfermeil &middot; Snapchat : usinedupneu &middot; <a href="#">Mentions légales</a></p>
+    <span><b style="color:var(--ink)">L'Usine du Pneu</b> · 106 avenue Vaucanson, 93370 Montfermeil</span>
+    <span>Snapchat : usinedupneu · <a href="#">Mentions légales</a></span>
   </div>
 </footer>
 
-<div class="callbar"><a href="tel:+33749479294" class="btn btn-r">Appeler le 07 49 47 92 94</a></div>
+<div class="callbar"><a class="btn btn-red" href="tel:+33749479294">Appeler le 07 49 47 92 94</a></div>
 
 <script>
-// Tarifs relevés sur l'affiche de l'atelier (forfait 2 pneus ; 4 pneus = le double)
+// Tarifs relevés sur l'affiche de l'atelier (2 pneus ; 4 pneus = le double)
 var PRIX = { 13: 60, 14: 60, 15: 70, 16: 80, 17: 90, 18: 120, 19: 140, 20: 150 };
-var state = { inch: 16, n: 2 };
+var sel = { inch: 16, n: 2 };
+function eur(n) { return n.toFixed(2).replace('.', ','); }
+function paris() { return new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' })); }
 
-// ---------- Ouvert / fermé (heure de Paris) ----------
+// ---------- La pancarte OUVERT / FERMÉ ----------
 (function () {
   var H = { 0: [600, 1080], 1: [540, 1140], 2: [540, 1140], 3: [540, 1140], 4: [540, 1140], 5: [540, 1140], 6: [540, 1140] };
-  var noms = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-  function hm(m) { var h = Math.floor(m / 60), r = m % 60; return h + 'h' + (r ? r : ''); }
-  function dur(m) { var h = Math.floor(m / 60), r = m % 60; return (h ? h + ' h ' : '') + (h && r < 10 ? '0' : '') + r + ' min'; }
+  function hm(m) { var h = Math.floor(m / 60), r = m % 60; return h + 'h' + (r || ''); }
   function tick() {
-    var n = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' })), d = n.getDay(), t = n.getHours() * 60 + n.getMinutes();
-    var el = document.getElementById('live'), tx = document.getElementById('live-txt'), s = H[d];
-    if (t >= s[0] && t < s[1]) { tx.innerHTML = 'Ouvert, ferme dans <b>' + dur(s[1] - t) + '</b>'; el.classList.remove('closed'); }
-    else if (t < s[0]) { tx.innerHTML = "Fermé, ouvre aujourd'hui à " + hm(s[0]) + ', dans <b>' + dur(s[0] - t) + '</b>'; el.classList.add('closed'); }
-    else { var nd = (d + 1) % 7; tx.innerHTML = 'Fermé, ouvre demain à ' + hm(H[nd][0]); el.classList.add('closed'); }
-    document.querySelectorAll('#hours li').forEach(function (li) { li.classList.toggle('today', +li.getAttribute('data-d') === d); });
+    var n = paris(), d = n.getDay(), t = n.getHours() * 60 + n.getMinutes(), s = H[d];
+    var open = t >= s[0] && t < s[1];
+    document.getElementById('plate').classList.toggle('closed', !open);
+    document.getElementById('open-txt').textContent = "jusqu'à " + hm(s[1]);
+    document.getElementById('shut-txt').textContent = t < s[0] ? 'on ouvre à ' + hm(s[0]) : 'on rouvre demain à ' + hm(H[(d + 1) % 7][0]);
+    document.querySelectorAll('#hours [data-d]').forEach(function (r) { r.classList.toggle('today', r.getAttribute('data-d').split(',').indexOf(String(d)) > -1); });
   }
   tick(); setInterval(tick, 30000);
 })();
 
-// ---------- La machine à prix ----------
+// ---------- Le tableau et le ticket ----------
 (function () {
-  var ruler = document.getElementById('ruler'), digits = document.getElementById('digits'), fInch = document.getElementById('f-inch'), fQty = document.getElementById('f-qty');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches, spin = 0, cols = [];
+  var rows = document.getElementById('rows'), ticket = document.getElementById('ticket'), led = document.getElementById('led');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   Object.keys(PRIX).forEach(function (k) {
-    var b = document.createElement('button'); b.type = 'button'; b.innerHTML = k + '"<small>R' + k + '</small>'; b.setAttribute('aria-pressed', String(+k === state.inch)); b.setAttribute('aria-label', k + ' pouces');
-    b.addEventListener('click', function () { state.inch = +k; render(true); });
-    ruler.appendChild(b);
-    var o = document.createElement('option'); o.value = k; o.textContent = 'R' + k + ' (' + k + ' pouces)'; fInch.appendChild(o);
-  });
-  document.querySelectorAll('#qty button').forEach(function (b) { b.addEventListener('click', function () { state.n = +b.getAttribute('data-n'); render(true); }); });
-  fInch.addEventListener('change', function () { state.inch = +fInch.value; render(false); });
-  fQty.addEventListener('change', function () { state.n = +fQty.value; render(false); });
-  // 3 rouleaux de chiffres façon compteur
-  for (var i = 0; i < 3; i++) {
-    var d = document.createElement('div'); d.className = 'd'; var s = document.createElement('span');
-    for (var j = 0; j <= 9; j++) { var bb = document.createElement('b'); bb.textContent = j; s.appendChild(bb); }
-    d.appendChild(s); digits.appendChild(d); cols.push({ el: d, s: s });
-  }
-  function render(anim) {
-    var price = PRIX[state.inch] * (state.n === 4 ? 2 : 1), str = String(price).padStart(3, '0');
-    cols.forEach(function (c, i) {
-      c.el.style.display = (i === 0 && price < 100) ? 'none' : '';
-      c.s.style.transform = 'translateY(' + (-1.1 * +str[i]) + 'em)';
+    var li = document.createElement('li');
+    li.innerHTML = '<span class="inch">' + k + '"<small>R' + k + '</small></span>';
+    [2, 4].forEach(function (n) {
+      var p = PRIX[k] * (n === 4 ? 2 : 1), b = document.createElement('button');
+      b.type = 'button'; b.className = 'pick'; b.innerHTML = p + '<i>€</i>';
+      b.setAttribute('aria-label', n + ' pneus de ' + k + ' pouces à ' + p + ' euros');
+      b.dataset.inch = k; b.dataset.n = n;
+      b.addEventListener('click', function () { sel = { inch: +k, n: n }; print(); });
+      li.appendChild(b);
     });
-    document.getElementById('price-sr').textContent = price + ' euros';
-    ruler.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('aria-label') === state.inch + ' pouces')); });
-    document.querySelectorAll('#qty button').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.getAttribute('data-n') === state.n)); });
-    document.querySelectorAll('.pair i').forEach(function (p, i) { p.classList.toggle('on', i < state.n); });
-    document.getElementById('inch-l').textContent = 'Jante ' + state.inch + ' pouces';
-    // la roue grandit avec la jante
-    var sc = 0.78 + (state.inch - 13) * 0.032, rim = 84 + (state.inch - 13) * 7;
-    document.getElementById('big').style.transform = 'scale(' + sc + ')';
-    document.getElementById('rim').setAttribute('r', rim);
-    document.getElementById('rim2').setAttribute('r', rim - 16);
-    document.getElementById('spokes').setAttribute('transform', 'translate(200 200) scale(' + (rim / 112) + ') translate(-200 -200)');
-    if (anim && !reduce) { spin += 360; document.getElementById('bigspin').style.transform = 'rotate(' + spin + 'deg)'; }
-    document.getElementById('take').textContent = 'Réserver ' + state.n + ' pneus R' + state.inch + ' à ' + price + ' €';
-    fInch.value = state.inch; fQty.value = state.n;
-    if (window.__preview) window.__preview();
+    rows.appendChild(li);
+  });
+  function barcode(seed) {
+    var svg = document.getElementById('bar'), x = 0, out = '', s = seed;
+    while (x < 200) { s = (s * 9301 + 49297) % 233280; var w = 1 + Math.floor(s / 233280 * 4); if ((s >> 3) % 3) out += '<rect x="' + x + '" y="0" width="' + w + '" height="46" fill="#111"/>'; x += w + 1; }
+    svg.innerHTML = out;
   }
-  window.__render = render;
-  render(false);
+  function fill() {
+    var p = PRIX[sel.inch] * (sel.n === 4 ? 2 : 1), n = paris();
+    document.getElementById('t-line').textContent = sel.n + ' pneus R' + sel.inch;
+    document.getElementById('t-p').textContent = eur(p);
+    document.getElementById('t-tot').textContent = eur(p) + ' €';
+    document.getElementById('t-date').textContent = n.toLocaleDateString('fr-FR') + '  ' + n.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    barcode(sel.inch * 37 + sel.n * 11 + p);
+    rows.querySelectorAll('.pick').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.inch === sel.inch && +b.dataset.n === sel.n)); });
+  }
+  function print() {
+    if (reduce) { fill(); ticket.classList.add('out'); return; }
+    ticket.style.transition = 'transform .35s ease-in'; ticket.classList.remove('out');
+    led.classList.add('busy');
+    setTimeout(function () {
+      fill(); ticket.style.transition = ''; void ticket.offsetWidth; ticket.classList.add('out');
+      setTimeout(function () { led.classList.remove('busy'); }, 1400);
+    }, 380);
+  }
+  fill();
+  if (reduce) ticket.classList.add('out');
+  // le premier ticket s'imprime quand on arrive sur le tableau
+  var o = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { ticket.classList.add('out'); o.disconnect(); } }, { threshold: .3 });
+  o.observe(document.querySelector('.printer'));
 })();
 
-// ---------- Le message bien rangé envoyé à l'atelier ----------
+// ---------- Envoi du ticket à l'atelier ----------
 (function () {
   var f = document.getElementById('form'), NUM = '33749479294', via = 'wa';
   function val(n) { return (f.querySelector('[name="' + n + '"]').value || '').trim(); }
-  function msg() {
-    var nom = [val('prenom'), val('nom').toUpperCase()].filter(Boolean).join(' ');
-    var price = PRIX[state.inch] * (state.n === 4 ? 2 : 1);
-    return 'Nouvelle demande de pneus\n' +
-      'Forfait : ' + state.n + ' pneus R' + state.inch + ' (' + price + ' €)\n' +
-      (val('taille') ? 'Taille : ' + val('taille').toUpperCase() + '\n' : '') +
-      'Client : ' + (nom || '?') + '\n' +
-      'Tél : ' + (val('tel') || '?') + '\n' +
-      '(envoyé depuis le site)';
-  }
-  function preview() { document.getElementById('preview').textContent = msg(); }
-  window.__preview = preview;
-  f.addEventListener('input', preview);
   f.querySelectorAll('[data-via]').forEach(function (b) { b.addEventListener('click', function () { via = b.getAttribute('data-via'); }); });
   f.addEventListener('submit', function (e) {
     e.preventDefault();
     var note = f.querySelector('.note'), tel = val('tel').replace(/[^0-9+]/g, '');
+    if (!val('prenom') || !val('nom')) { note.textContent = 'Indiquez votre nom et votre prénom.'; return; }
     if (tel.length < 10) { note.textContent = 'Indiquez un numéro de téléphone valide.'; f.querySelector('[name="tel"]').focus(); return; }
-    var t = encodeURIComponent(msg());
+    var p = PRIX[sel.inch] * (sel.n === 4 ? 2 : 1);
+    var msg = 'Nouvelle demande de pneus\n' +
+      'Forfait : ' + sel.n + ' pneus R' + sel.inch + ' (' + p + ' €)\n' +
+      'Client : ' + val('prenom') + ' ' + val('nom').toUpperCase() + '\n' +
+      'Tél : ' + val('tel') + '\n(envoyé depuis le site)';
+    var t = encodeURIComponent(msg);
     window.open(via === 'wa' ? 'https://wa.me/' + NUM + '?text=' + t : 'sms:+' + NUM + '?&body=' + t, '_blank');
-    note.textContent = via === 'wa' ? "WhatsApp s'ouvre avec le message prêt, il ne reste plus qu'à appuyer sur Envoyer." : "Votre appli SMS s'ouvre avec le message prêt.";
+    note.textContent = via === 'wa' ? "WhatsApp s'ouvre avec votre ticket, il ne reste plus qu'à appuyer sur Envoyer." : "Votre appli SMS s'ouvre avec votre ticket.";
   });
-  preview();
 })();
-
-// ---------- Apparitions ----------
-var io = new IntersectionObserver(function (es) {
-  es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal').forEach(function (el, i) { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
 </script>
 </body>
 </html>
